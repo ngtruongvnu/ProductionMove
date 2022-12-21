@@ -1,12 +1,14 @@
 package com.project.productmove.dto;
 
+import java.util.Date;
+
 public class CustomerDTO {
     private Long id;
     private String firstname;
     private String lastname;
     private String phone;
     private String address;
-    private java.sql.Timestamp createdDate;
+    private Date createdDate;
     private String createdBy;
     private java.sql.Timestamp modifiedDate;
     private String modifiedBy;
@@ -51,11 +53,11 @@ public class CustomerDTO {
         this.address = address;
     }
 
-    public java.sql.Timestamp getCreatedDate() {
+    public Date getCreatedDate() {
         return this.createdDate;
     }
 
-    public void setCreatedDate(java.sql.Timestamp createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 

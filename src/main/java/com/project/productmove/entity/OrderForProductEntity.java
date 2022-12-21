@@ -2,6 +2,7 @@ package com.project.productmove.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * This class created at 12/5/2022 11:33:01
@@ -29,7 +30,7 @@ public class OrderForProductEntity {
     private String createdBy;
     @Basic
     @Column(name = "created_date")
-    private Timestamp createdDate;
+    private Date createdDate;
 
     public long getId() {
         return id;
@@ -71,11 +72,11 @@ public class OrderForProductEntity {
         this.createdBy = createdBy;
     }
 
-    public Timestamp getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Timestamp createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
