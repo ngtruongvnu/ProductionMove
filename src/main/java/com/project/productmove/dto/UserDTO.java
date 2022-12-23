@@ -1,9 +1,12 @@
 package com.project.productmove.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserDTO {
     private Long id;
     private String name;
-    private String role;
+    private int role;
+    @JsonProperty(value = "user_name",required = true)
     private String userName;
     private String password;
     private String imgUrl;
@@ -28,11 +31,11 @@ public class UserDTO {
         this.name = name;
     }
 
-    public String getRole() {
+    public int getRole() {
         return this.role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 

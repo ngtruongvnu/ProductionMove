@@ -1,6 +1,9 @@
 package com.project.productmove.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ProductsDTO {
+    @JsonProperty(value = "product_id",required = true)
     private Long id;
     private Integer status;
     private Long place;
@@ -13,6 +16,17 @@ public class ProductsDTO {
     private String modifiedBy;
     private java.sql.Timestamp modifiedDate;
     private Long productDetail;
+
+    @JsonProperty(value = "user_id",required = true)
+    private Long userId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public Long getId() {
         return this.id;

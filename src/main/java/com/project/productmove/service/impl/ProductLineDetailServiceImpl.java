@@ -2,7 +2,9 @@ package com.project.productmove.service.impl;
 
 import com.project.productmove.entity.ProductDetailEntity;
 import com.project.productmove.repo.ProductLineDetailRepo;
+import com.project.productmove.repo.ProductRepo;
 import com.project.productmove.service.ProductLineDetailService;
+import com.project.productmove.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +30,11 @@ public class ProductLineDetailServiceImpl implements ProductLineDetailService {
     @Autowired
     ProductLineDetailRepo productLineDetailRepo;
 
+
     @Override
     public String checkProductWarranty(long productLine) {
         Boolean check = productLineDetailRepo.existsById((int)productLine);
         if(check = false) return "ProductLine không tồn tại";
-        
+        return "true";
     }
 }

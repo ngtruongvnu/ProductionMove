@@ -4,7 +4,9 @@ import com.project.productmove.dto.CustomerDTO;
 import com.project.productmove.dto.OrderForProductDTO;
 import com.project.productmove.dto.ProductReceiveFromFactory;
 import com.project.productmove.dto.SellProductFilterTime;
+import com.project.productmove.repo.ProductLineDetailRepo;
 import com.project.productmove.repo.ProductRepo;
+import com.project.productmove.service.ProductLineDetailService;
 import com.project.productmove.service.ProductService;
 import com.project.productmove.service.UserService;
 import lombok.extern.log4j.Log4j2;
@@ -14,11 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * This class created at 12/18/2022 16:02:22
- *
- * @author HoàngKhôngNgủ
- */
 @RestController
 @RequestMapping("api/v1/agent")
 @Log4j2
@@ -27,6 +24,8 @@ public class AgentController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ProductLineDetailService productLineDetailService;
 
     @Autowired
     ProductService productService;
@@ -65,10 +64,13 @@ public class AgentController {
     @PostMapping("/product_recall")
     ResponseEntity<Object> productRecall(@RequestParam("user_id") String userId,
                                          @RequestParam("productline_detail_id") long productLine){
-        List<Long> listProductId = userService.getListProductIdByPrDetail(productLine);
-        for (Long id : listProductId){
-            log.info(id);
-            userService.customerReceiveWarrantyProduct(8,id);
+        String result = productLineDetailService.checkProductWarranty(productLine);
+        if(result.equals("true")) {
+            List<Long> listProductId = userService.getListProductIdByPrDetail(productLine);
+            for (Long id : listProductId) {
+                log.info("product_id in list:" + id);
+                userService.customerReceiveWarrantyProduct(8, id);
+            }
         }
 
         return null;

@@ -49,6 +49,18 @@ public class ProductsEntity {
     @Column(name = "product_detail")
     private long productDetail;
 
+    @Basic
+    @Column(name = "user_id")
+    private long userId;
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
     public long getId() {
         return id;
     }

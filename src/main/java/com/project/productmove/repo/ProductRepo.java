@@ -13,5 +13,9 @@ public interface ProductRepo extends JpaRepository<ProductsEntity, Integer> {
     @Query("UPDATE ProductsEntity pr SET pr.status = ?1 WHERE pr.id = ?2")
     void upDateStatus(int status, long productId);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE ProductsEntity pr SET pr.userId = ?1 WHERE pr.id = ?2")
+    void upDateUserId(long agentId, long productId);
 
 }

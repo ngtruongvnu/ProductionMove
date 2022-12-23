@@ -2,8 +2,10 @@ package com.project.productmove.service.impl;
 
 import com.project.productmove.dto.CustomerDTO;
 import com.project.productmove.dto.UserDTO;
+import com.project.productmove.dto.UserLoginDTO;
 import com.project.productmove.entity.CustomerEntity;
 import com.project.productmove.entity.UserEntity;
+import com.project.productmove.entity.WarehouseEntity;
 import com.project.productmove.repo.CustomerRepo;
 import com.project.productmove.repo.ProductRepo;
 import com.project.productmove.repo.UserRepo;
@@ -80,5 +82,16 @@ public class UserServiceImpl implements UserService {
         }
         return listProductId;
     }
+
+    @Override
+    public List<UserDTO> filterByRole(int role) {
+        List<UserEntity> listE = userRepo.listUserEntityByRole(role);
+        List<UserDTO> ListD = listE.stream().map(UserEntity -> modelMapper.map(UserEntity,
+                        UserDTO.class))
+                .collect(Collectors.toList());
+        return ListD;
+    }
+
+
 
 }
