@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
                     this.isLoading = false;
                 },
                 complete: () => {
+                    this.toastify.success('Login success');
                     this.isLoading = false;
                 }
             })

@@ -12,23 +12,26 @@
             </span>
         </div>
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+            <li nz-submenu nzOpen nzTitle="Quản lý sản phẩm" nzIcon="dashboard">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="welcome">Welcome</a>
+                        <a routerLink="product-lines">Quản lý danh mục sản phẩm</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Monitor</a>
+                        <a routerLink="products">Theo dõi sản phẩm</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Workplace</a>
+                        <a routerLink="product-statistics">Thống kê sản phẩm</a>
                     </li>
                 </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+            <li nz-submenu nzOpen nzTitle="Quản lý tài khoản" nzIcon="user">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Basic Form</a>
+                        <a routerLink="manage-user">Quản lý cơ cở</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="add-user">Cấp tài khoản</a>
                     </li>
                 </ul>
             </li>
@@ -45,7 +48,8 @@
                 </span>
                 <h1 class="header-title">Production Move</h1>
                 <div class="header-avatar">
-                    <nz-avatar nzIcon="user" style="background-color:#87d068;" nz-dropdown [nzDropdownMenu]="logoutDropDown"
+                    <nz-avatar nzIcon="user" style="background-color:#87d068;" nz-dropdown
+                               [nzDropdownMenu]="logoutDropDown"
                                nzPlacement="bottomLeft"></nz-avatar>
                     <span class="header-username">Hello, {{currentUser.firstName}}</span>
                 </div>

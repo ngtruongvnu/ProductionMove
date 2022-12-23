@@ -1,0 +1,139 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>Admin</nz-breadcrumb-item>
+    <nz-breadcrumb-item (click)="back()">
+        <a>Quản lý danh mục sản phẩm</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        <a>Chi tiết danh mục sản phẩm</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div class="container">
+    <nz-card>
+        <form nz-form [formGroup]="productLineForm" (ngSubmit)="updateProductDetail()">
+            <div nz-row [nzGutter]="24">
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Dòng sản phẩm</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="name">
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Loại sản phẩm</nz-form-label>
+                        <nz-form-control>
+                            <nz-select formControlName="type" nzShowSearch nzAllowClear
+                                       nzPlaceHolder="Chọn loại sản phẩm">
+                                <nz-option *ngFor="let productType of carType" [nzLabel]="productType.label"
+                                           [nzValue]="productType.value"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <nz-form-item>
+                        <nz-form-label>Phân khúc xe</nz-form-label>
+                        <nz-form-control>
+                            <nz-select formControlName="categoryCar" nzShowSearch nzAllowClear
+                                       nzPlaceHolder="Chọn phân khúc xe">
+                                <nz-option *ngFor="let carCategory of carCategories" [nzLabel]="carCategory.label"
+                                           [nzValue]="carCategory.value"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <nz-form-item>
+                        <nz-form-label>Chiều dài</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="length"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <nz-form-item>
+                        <nz-form-label>Chiều rộng</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="width"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="4">
+                    <nz-form-item>
+                        <nz-form-label>Sức mạnh</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="power"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <nz-form-item>
+                        <nz-form-label>Động cơ</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="engine"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <nz-form-item>
+                        <nz-form-label>Momentum</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="momentum"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <nz-form-item>
+                        <nz-form-label>Gearbox</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="gearbox"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <nz-form-item>
+                        <nz-form-label>Seats</nz-form-label>
+                        <nz-form-control>
+                            <input nz-input formControlName="seats"/>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="18">
+                    <nz-form-item>
+                        <nz-form-label>Mô tả</nz-form-label>
+                        <nz-form-control>
+                            <textarea nz-input formControlName="description" rows="6"></textarea>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col [nzSpan]="6">
+                    <nz-form-item>
+                        <nz-form-label>Ảnh</nz-form-label>
+                        <nz-form-control>
+<!--                            <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/"-->
+<!--                                       [nzFileList]="fileList"-->
+<!--                                       [nzLimit]="1"-->
+<!--                                       [nzShowUploadList]="false"-->
+<!--                                       (nzChange)="handleChange($event)">-->
+<!--                                <button nz-button>-->
+<!--                                    <i class="anticon anticon-upload"></i>Upload-->
+<!--                                </button>-->
+<!--                            </nz-upload>-->
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col [nzSpan]="16"></div>
+                <div nz-col [nzSpan]="8" class="btn-updates">
+                    <button nz-button nzType="default" (click)="back()">Trở lại</button>
+                    <button nz-button nzType="primary" *ngIf="canSave" class="btn-save" (click)="save()">Lưu thay đổi</button>
+                    <button nz-button nzType="primary" *ngIf="!canSave" (click)="unableSave($event)">Cập nhật</button>
+                    <button nz-button nzType="primary" nzDanger (click)="delete($event)">Xóa dòng sản phẩm này</button>
+                </div>
+            </div>
+        </form>
+    </nz-card>
+</div>
