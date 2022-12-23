@@ -5,8 +5,8 @@ import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
     selector: 'app-layout',
-    templateUrl: './layout.component.html',
-    styleUrls: ['./layout.component.less']
+    templateUrl: './agent.component.html',
+    styleUrls: ['./agent.component.less']
 })
 export class LayoutComponent implements OnInit {
     isCollapsed = false;

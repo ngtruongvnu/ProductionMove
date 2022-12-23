@@ -23,9 +23,11 @@ const defaultUser : IUserInfo = {
     firstName: 'Tuan',
     lastName: "Vu",
     token: "123456789",
-    role: "admin",
+    role: "agent",
     id: "123"
 }
+
+
 
 @Injectable({
     providedIn: 'root'
