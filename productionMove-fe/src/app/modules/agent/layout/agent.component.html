@@ -12,23 +12,29 @@
             </span>
         </div>
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+            <li nz-submenu nzOpen nzTitle="Sản phẩm" nzIcon="dashboard">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="welcome">Welcome</a>
+                        <a routerLink="sell-product">Bán sản phẩm</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Monitor</a>
+                        <a routerLink="sell-product-statistic">Thống kê bán sản phẩm</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Workplace</a>
+                        <a routerLink="import-product">Nhập sản phẩm</a>
                     </li>
                 </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+            <li nz-submenu nzOpen nzTitle="Bảo hành" nzIcon="form">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Basic Form</a>
+                        <a routerLink="recall-product">Triệu hồi sản phẩm</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="warranty-product">Bảo hành sản phẩm</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="giveback-warranty-product">Gửi trả khách hàng</a>
                     </li>
                 </ul>
             </li>
@@ -61,6 +67,7 @@
         </nz-header>
         <nz-content>
             <div class="inner-content">
+                <router-outlet></router-outlet>
             </div>
         </nz-content>
     </nz-layout>

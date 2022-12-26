@@ -1,0 +1,20 @@
+<form nz-form>
+    <nz-form-item>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select productline" [(ngModel)]="options">
+            <nz-option *ngFor="let o of options" [nzValue]="o.name" [nzLabel]="o.value"></nz-option>
+        </nz-select>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select productline" [(ngModel)]="errors">
+            <nz-option *ngFor="let o of errors" [nzValue]="o.value" [nzLabel]="o.name"></nz-option>
+        </nz-select>
+    </nz-form-item>
+    <nz-form-item id="service">
+        <input nz-input placeholder="Nhập ID Service Center"/>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>
