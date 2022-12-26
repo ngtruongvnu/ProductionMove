@@ -8,6 +8,8 @@ import com.project.productmove.repo.CustomerRepo;
 import com.project.productmove.repo.ProductRepo;
 import com.project.productmove.repo.UserRepo;
 import com.project.productmove.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,7 @@ import java.util.stream.Collectors;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    private static Logger log = LogManager.getLogger();
 
     @PersistenceContext
     EntityManager em;
@@ -37,6 +40,10 @@ public class UserServiceImpl implements UserService {
     UserRepo userRepo;
     @Autowired
     ProductRepo productRepo;
+
+    @Autowired
+    ModelMapper mapper;
+
     @Override
     public List<UserDTO> getAll(){
         List<UserEntity> listE = userRepo.findAllById(1);
@@ -81,4 +88,32 @@ public class UserServiceImpl implements UserService {
         return listProductId;
     }
 
+    @Override
+    public Boolean newCreateUser(UserDTO userDTO) {
+        try {
+            UserEntity entity = mapper.map(userDTO, UserEntity.class);
+            UserEntity savedEntity = userRepo.save(entity);
+            log.info("Created " + savedEntity);
+            return true;
+        } catch (Exception e) {
+            log.error(e);
+            log.error("Can't create new user " + userDTO.toString());
+            return false;
+        }
+    }
+
+    @Override
+    public List<UserDTO> getUserByRole(Integer role) {
+        try {
+            List<UserEntity> entityList = userRepo.findUserEntitiesByRole(role);
+            List<UserDTO> userDTOS = entityList.stream()
+                    .map(x -> modelMapper.map(x, UserDTO.class))
+                    .collect(Collectors.toList());
+            return userDTOS;
+        } catch (Exception e) {
+            log.error(e);
+            log.error("Error in getUserByRole " + role);
+            return null;
+        }
+    }
 }

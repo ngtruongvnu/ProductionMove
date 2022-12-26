@@ -16,4 +16,8 @@ public interface UserService {
 
     List<Long> getListProductIdByPrDetail(long productDetailId);
 
+    Boolean newCreateUser(UserDTO userDTO);
+
+    List<UserDTO> getUserByRole(Integer role);
+
 }

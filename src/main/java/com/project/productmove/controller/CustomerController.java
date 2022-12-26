@@ -11,7 +11,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -79,7 +79,7 @@ public class CustomerController {
          Instant instant = current.atZone(ZoneId.systemDefault()).toInstant();
          Date date = Date.from(instant);
          System.out.println(date);
-         customerDTO.setCreatedDate(date);
+         customerDTO.setCreatedDate((Timestamp) date);
          customerService.addCustomer(customerDTO);
          return new ResponseEntity<Object>("success", HttpStatus.OK);
     }

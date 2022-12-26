@@ -11,8 +11,7 @@ public interface UserRepo extends JpaRepository<UserEntity, Integer> {
 
     @Query(value = "select * from user where id = 0",nativeQuery = true)
     List<UserEntity> getAll();
-
-
-
     List<UserEntity> findAllById(long id);
+
+    List<UserEntity> findUserEntitiesByRole(Integer role);
 }
