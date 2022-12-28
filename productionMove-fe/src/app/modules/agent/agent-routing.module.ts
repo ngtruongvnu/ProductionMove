@@ -7,6 +7,9 @@ import {ImportProductComponent} from "./pages/import-product/import-product.comp
 import {RecallProductComponent} from "./pages/recall-product/recall-product.component";
 import {WarrantyProductComponent} from "./pages/warranty-product/warranty-product.component";
 import {GivebackWarrantyProductComponent} from "./pages/giveback-warranty-product/giveback-warranty-product.component";
+import {ImpossibleFixProductComponent} from "./pages/impossible-fix-product/impossible-fix-product.component";
+import {NotificationCustomerComponent} from "./pages/notification-customer/notification-customer.component";
+import {ReceiveFromServicecenterComponent} from "./pages/receive-from-servicecenter/receive-from-servicecenter.component";
 
 const routes: Routes = [
     { path: '', component: LayoutComponent, children: [
@@ -16,7 +19,10 @@ const routes: Routes = [
         {path: 'import-product', component: ImportProductComponent},
         {path: 'recall-product', component: RecallProductComponent},
         {path: 'warranty-product', component: WarrantyProductComponent},
-        {path: 'giveback-warranty-product', component: GivebackWarrantyProductComponent}
+        {path: 'giveback-warranty-product', component: GivebackWarrantyProductComponent},
+        {path: 'impossible-fix-product', component: ImpossibleFixProductComponent},
+        {path: 'notification-customer', component: NotificationCustomerComponent},
+        {path: 'receive-from-servicecenter', component: ReceiveFromServicecenterComponent}
     ]}
 ];
 

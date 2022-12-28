@@ -1,3 +1,7 @@
+<nz-radio-group [(ngModel)]="radioValue" nzButtonStyle="solid">
+    <label nz-radio-button nzValue="By productline">Productline</label>
+    <label nz-radio-button nzValue="By batch">Batch</label>
+</nz-radio-group>
 <form nz-form>
     <nz-form-item>
         <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select productline" [(ngModel)]="options">

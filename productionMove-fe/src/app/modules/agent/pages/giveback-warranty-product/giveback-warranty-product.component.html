@@ -1,1 +1,20 @@
-<p>giveback-warranty-product works!</p>
+<nz-table #basicTable [nzData]="listOfData"
+          [nzShowSizeChanger]="true"
+          [nzPageSizeOptions]="[6, 8, 10]">
+    <thead>
+    <tr>
+        <th>Họ</th>
+        <th>Tên</th>
+        <th>Dòng sản phẩm</th>
+        <th>Error</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.firstname }}</td>
+        <td>{{ data.lastname }}</td>
+        <td>{{ data.productline }}</td>
+        <td>{{ data.error}}</td>
+    </tr>
+    </tbody>
+</nz-table>

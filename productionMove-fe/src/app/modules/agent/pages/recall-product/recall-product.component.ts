@@ -35,4 +35,5 @@ export class RecallProductComponent implements OnInit {
         { name: "Lỗi hệ thống điều khiển", value: 3},
         { name: "Lỗi khác", value: 4},
     ]
+    radioValue = 'A'
 }

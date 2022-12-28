@@ -26,6 +26,13 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzRadioModule} from "ng-zorro-antd/radio";
 import {NzCascaderModule} from "ng-zorro-antd/cascader";
+import {NzListModule} from "ng-zorro-antd/list";
+import {NzSkeletonModule} from "ng-zorro-antd/skeleton";
+import {NzSpinModule} from "ng-zorro-antd/spin";
+import { ImpossibleFixProductComponent } from './pages/impossible-fix-product/impossible-fix-product.component';
+import { NotificationCustomerComponent } from './pages/notification-customer/notification-customer.component';
+import { ReceiveFromServicecenterComponent } from './pages/receive-from-servicecenter/receive-from-servicecenter.component';
+import { RecallByBatchComponent } from './pages/recall-by-batch/recall-by-batch.component';
 
 
 @NgModule({
@@ -36,7 +43,11 @@ import {NzCascaderModule} from "ng-zorro-antd/cascader";
     SellProductStatisticComponent,
     WarrantyProductComponent,
     GivebackWarrantyProductComponent,
-    RecallProductComponent
+    RecallProductComponent,
+    ImpossibleFixProductComponent,
+    NotificationCustomerComponent,
+    ReceiveFromServicecenterComponent,
+    RecallByBatchComponent
   ],
     imports: [
         CommonModule,
@@ -58,7 +69,10 @@ import {NzCascaderModule} from "ng-zorro-antd/cascader";
         NzTableModule,
         NzRadioModule,
         FormsModule,
-        NzCascaderModule
+        NzCascaderModule,
+        NzListModule,
+        NzSkeletonModule,
+        NzSpinModule
     ]
 })
 export class AgentModule { }
