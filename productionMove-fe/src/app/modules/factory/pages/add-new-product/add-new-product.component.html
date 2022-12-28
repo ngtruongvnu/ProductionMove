@@ -1,0 +1,89 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>Factory</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        <a>Quản lý lô sản phẩm</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div class="container">
+    <nz-card>
+        <div class="content">
+            <div class="title">
+                <div></div>
+                <h3>Danh sách lô sản phẩm</h3>
+                <button nz-button nzType="primary" (click)="createNewProductBatch(tplContent)">
+                    <i nz-icon nzType="plus"></i>
+                    Thêm mới
+                </button>
+                <ng-template #tplContent>
+                    <form nz-form [formGroup]="formNewBatch">
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="8" nzFor="productName" nzRequired>Tên dòng sản phẩm</nz-form-label>
+                            <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng chọn tên dòng sản phẩm">
+                                <nz-select
+                                    id="productName"
+                                    formControlName="productName"
+                                    nzPlaceHolder="Chọn tên dòng sản phẩm"
+                                >
+                                    <nz-option
+                                        *ngFor="let productLine of productLineList"
+                                        [nzLabel]="productLine.name"
+                                        [nzValue]="productLine.id" ></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="8" nzRequired nzFor="quantity">Số lượng sản phẩm</nz-form-label>
+                            <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng nhập số lượng sản phẩm">
+                                <input id="quantity" type="text" nz-input formControlName="quantity"
+                                       placeholder="Nhập số lượng sản phẩm của lô"/>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                            <nz-form-label [nzSpan]="8" nzFor="warehouse" nzRequired>Chọn địa điểm kho lưu trữ</nz-form-label>
+                            <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng địa điểm chọn kho lưu trữ">
+                                <nz-select
+                                    id="warehouse"
+                                    formControlName="warehouseId"
+                                    nzPlaceHolder="Chọn kho lưu trữ"
+                                >
+                                    <nz-option
+                                        *ngFor="let warehouse of warehouses"
+                                        [nzLabel]="warehouse.address"
+                                        [nzValue]="warehouse.id" ></nz-option>
+                                </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                    </form>
+                </ng-template>
+            </div>
+            <nz-table
+                #sortTable
+                [nzData]="listOfData"
+                nzTableLayout="fixed"
+                [nzPageSize]="pagesize"
+                [nzShowPagination]="true"
+                [nzShowSizeChanger]="true"
+                [nzPageSizeOptions]="[6, 8, 10]"
+                [nzLoading]="isLoading"
+                nzSize="small"
+            >
+                <thead>
+                <tr>
+                    <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare"
+                        [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of sortTable.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.productName }}</td>
+                    <td>{{ data.quantity }}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-card>
+</div>

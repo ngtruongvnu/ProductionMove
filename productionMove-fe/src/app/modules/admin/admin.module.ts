@@ -26,6 +26,7 @@ import {NzFormModule} from "ng-zorro-antd/form";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import { NewProductlineComponent } from './pages/new-productline/new-productline.component';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NewProductlineComponent } from './pages/new-productline/new-productline
     AddUserComponent,
     ProductlineDetailComponent,
     NewProductlineComponent,
+    ProductDetailComponent,
   ],
     imports: [
         CommonModule,

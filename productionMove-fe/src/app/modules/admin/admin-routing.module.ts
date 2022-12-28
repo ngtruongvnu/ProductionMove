@@ -8,6 +8,7 @@ import {ManageUserComponent} from "./pages/manage-user/manage-user.component";
 import {AddUserComponent} from "./pages/add-user/add-user.component";
 import {ProductlineDetailComponent} from "./pages/productline-detail/productline-detail.component";
 import {NewProductlineComponent} from "./pages/new-productline/new-productline.component";
+import {ProductDetailComponent} from "./pages/product-detail/product-detail.component";
 
 const routes: Routes = [
     {
@@ -19,6 +20,7 @@ const routes: Routes = [
             {path: 'product-lines/:id', component: ProductlineDetailComponent},
             {path: 'add-product-line', component: NewProductlineComponent},
             {path: 'products', component: ProductsComponent},
+            {path: 'products/:id', component: ProductDetailComponent},
             {path: 'product-statistics', component: ProductStatisticsComponent},
             {path: 'manage-user', component: ManageUserComponent},
             {path: 'add-user', component: AddUserComponent},

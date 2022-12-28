@@ -23,7 +23,7 @@ const defaultUser : IUserInfo = {
     firstName: 'Tuan',
     lastName: "Vu",
     token: "123456789",
-    role: "admin",
+    role: "factory",
     id: "123"
 }
 
