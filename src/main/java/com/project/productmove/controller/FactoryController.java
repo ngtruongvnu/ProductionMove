@@ -6,6 +6,7 @@ package com.project.productmove.controller;
  * @author Minh.LN
  */
 
+import com.project.productmove.dto.ProductBatchesAndProduclineDTO;
 import com.project.productmove.dto.ProductBatchesDTO;
 import com.project.productmove.service.ProductBatchService;
 import com.project.productmove.service.ProductService;
@@ -33,7 +34,7 @@ public class FactoryController {
     ResponseEntity<Object> getProducbatch(@RequestParam Long user_id)
     {
         try {
-            List<ProductBatchesDTO> list = productBatchService.getProductBatche(user_id);
+            List<ProductBatchesAndProduclineDTO> list = productBatchService.getProductBatche(user_id);
             log.info("get productbatch ok");
             return ResponseEntity.ok().body(list);
         } catch (Exception e) {

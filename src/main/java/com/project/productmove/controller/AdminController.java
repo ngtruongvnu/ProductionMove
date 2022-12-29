@@ -109,6 +109,19 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/user/get-all")
+    ResponseEntity<Object> getAllUser() {
+        try {
+            List<UserDTO> dto = userService.getAllUserByRole();
+            log.info("get productline {} ok", dto);
+            return ResponseEntity.ok().body(dto);
+        } catch (Exception e) {
+            log.error("Unexpected Error! (Should not be exist)");
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
+        }
+    }
+
     @GetMapping("/user/get-user-by-filter")
     ResponseEntity<Object> getUserByFiler(@RequestParam Integer role) {
         try {
@@ -182,17 +195,17 @@ public class AdminController {
 //    }
 
 
-//    @GetMapping("/product")
-//    ResponseEntity<Object> getProducts(){
-//        try {
-//            SumProductByStatusDTO dto = productService.getProductByStatus();
-//            log.info("getProductByStatus success");
-//            return ResponseEntity.ok().body(dto);
-//        } catch (Exception e){
-//            log.error(e);
-//            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
-//        }
-//    }
+    @GetMapping("/product")
+    ResponseEntity<Object> getProducts(){
+        try {
+            List<ProductsInfooDto> dtoList = productService.getInfoProducts();
+            log.info("getProductByStatus success");
+            return ResponseEntity.ok().body(dtoList);
+        } catch (Exception e){
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
+        }
+    }
 
     @GetMapping("/product/{id}")
     ResponseEntity<Object> get4_ProductByID(@PathVariable Long id){

@@ -34,5 +34,6 @@ public interface ProductService {
     List<ProductThongKeDTO> getProductByServiceCenter();
     List<ProductThongKeDTO> getProductByFactory();
 
+    List<ProductsInfooDto> getInfoProducts();
 
 }

@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -338,7 +339,27 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductThongKeDTO> getProductByFactory() {
+
         return null;
+    }
+
+    @Override
+    public List<ProductsInfooDto> getInfoProducts() {
+        List <ProductsInfooDto> dtoList = new ArrayList<>();
+        HashMap<Long, String> map = new HashMap<>();
+        List<ProductlineDetailsEntity> name = productLineDetailRepo.findAll();
+        for (ProductlineDetailsEntity n : name){
+            map.put(n.getId(), n.getName());
+        }
+        List<ProductsEntity> entityList = productRepo.findAll();
+        for (ProductsEntity i : entityList){
+            ProductsInfooDto dto = new ProductsInfooDto(i.getId(), i.getProductCode(), null, i.getStatus(), i.getWarrantyCount());
+            if (dto.getSo_lan_bao_hanh() == null)
+                dto.setSo_lan_bao_hanh(0);
+            dto.setProduct_name(map.get(i.getProductDetailId()));
+            dtoList.add(dto);
+        }
+        return dtoList;
     }
 
     @Override
