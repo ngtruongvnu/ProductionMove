@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit {
         {
             title: 'Mã sản phẩm',
             compare: (a: Product, b: Product) => a.productCode.localeCompare(b.productCode),
-            priority: false,
+            priority: false
         },
         {
             title: 'Tên sản phẩm',

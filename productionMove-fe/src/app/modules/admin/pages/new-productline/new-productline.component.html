@@ -16,9 +16,9 @@
                     <div nz-row>
                         <div nz-col [nzSpan]="20">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Dòng sản phẩm</nz-form-label>
+                                <nz-form-label nzFor="name" nzRequired>Dòng sản phẩm</nz-form-label>
                                 <nz-form-control nzErrorTip="Vui lòng nhập tên dòng sản phẩm">
-                                    <input nz-input formControlName="name">
+                                    <input id="name" nz-input formControlName="name">
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
@@ -52,33 +52,33 @@
                     <div nz-row [nzGutter]="24">
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Động cơ</nz-form-label>
+                                <nz-form-label nzFor="engine" nzRequired>Động cơ</nz-form-label>
                                 <nz-form-control nzErrorTip="Nhập thông số động cơ">
-                                    <input nz-input formControlName="engine"/>
+                                    <input id="engine" nz-input formControlName="engine"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Momentum</nz-form-label>
+                                <nz-form-label nzFor="momentum" nzRequired>Momentum</nz-form-label>
                                 <nz-form-control nzErrorTip="Nhập thông số momentum">
-                                    <input nz-input formControlName="momentum" type="number"/>
+                                    <input id="momentum" nz-input formControlName="momentum" type="number"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Gearbox</nz-form-label>
-                                <nz-form-control nzErrorTip="Nhập thng số gearbox">
-                                    <input nz-input formControlName="gearbox" type="number"/>
+                                <nz-form-label nzFor="gearbox" nzRequired>Hộp số</nz-form-label>
+                                <nz-form-control nzErrorTip="Nhập thông tin hộp số">
+                                    <input id="gearbox" nz-input formControlName="gearbox" type="number"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Seats</nz-form-label>
-                                <nz-form-control nzErrorTip="Nhập thông số seats">
-                                    <input nz-input formControlName="seats" type="number"/>
+                                <nz-form-label nzFor="seats" nzRequired>Số chỗ ngồi</nz-form-label>
+                                <nz-form-control nzErrorTip="Nhập số chỗ ngồi">
+                                    <input id="seats" nz-input formControlName="seats" type="number"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
@@ -86,25 +86,25 @@
                     <div nz-row [nzGutter]="24">
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Chiều dài</nz-form-label>
+                                <nz-form-label nzFor="length" nzRequired>Chiều dài</nz-form-label>
                                 <nz-form-control nzErrorTip="Nhập thông số chiều dài">
-                                    <input nz-input formControlName="length" type="number"/>
+                                    <input id="length" nz-input formControlName="length" type="number"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Chiều rộng</nz-form-label>
+                                <nz-form-label nzFor="width" nzRequired>Chiều rộng</nz-form-label>
                                 <nz-form-control nzErrorTip="Nhập thông số chiều rộng">
-                                    <input nz-input formControlName="width" type="number"/>
+                                    <input id="width" nz-input formControlName="width" type="number"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
                         <div nz-col [nzSpan]="6">
                             <nz-form-item>
-                                <nz-form-label nzRequired>Sức mạnh</nz-form-label>
-                                <nz-form-control nzErrorTip="Nhập thông số sức mạnh">
-                                    <input nz-input formControlName="power" type="number"/>
+                                <nz-form-label nzFor="power" nzRequired>Công suất</nz-form-label>
+                                <nz-form-control nzErrorTip="Nhập thông số công suất">
+                                    <input id="power" nz-input formControlName="power" type="number"/>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
@@ -112,9 +112,9 @@
                     <div nz-row>
                         <div nz-col [nzSpan]="20">
                             <nz-form-item>
-                                <nz-form-label>Mô tả</nz-form-label>
+                                <nz-form-label nzFor="description">Mô tả</nz-form-label>
                                 <nz-form-control>
-                                    <textarea nz-input formControlName="description" rows="8"></textarea>
+                                    <textarea id="description" nz-input formControlName="description" rows="8"></textarea>
                                 </nz-form-control>
                             </nz-form-item>
                         </div>
