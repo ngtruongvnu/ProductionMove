@@ -2,9 +2,7 @@ package com.project.productmove.service.impl;
 
 import com.project.productmove.dto.OrderForProductDTO;
 import com.project.productmove.dto.SellProductFilterTime;
-import com.project.productmove.entity.CustomerEntity;
 import com.project.productmove.entity.OrderForProductEntity;
-import com.project.productmove.repo.CustomerRepo;
 import com.project.productmove.repo.OrderForProductEntityRepo;
 import com.project.productmove.repo.ProductRepo;
 import com.project.productmove.service.ProductService;
@@ -46,9 +44,9 @@ public class ProductServiceImpl implements ProductService {
     public List<SellProductFilterTime> getProductSoldFilterTime(String filter) {
         List<SellProductFilterTime> spftList = new ArrayList<>();
         if(filter.equals("year")) {
-            String queryGetProductSoldFilterTime = "SELECT pd.product_name, count(*) as quantity_sell,(SELECT EXTRACT(YEAR FROM ofp.created_date)) AS YEAR \n" +
-                    "FROM product_detail pd \n" +
-                    "join products pr on pd.id = pr.product_detail\n" +
+            String queryGetProductSoldFilterTime = "SELECT pd.name, count(*) as quantity_sell,(SELECT EXTRACT(YEAR FROM ofp.created_date)) AS YEAR \n" +
+                    "FROM productline_details pd \n" +
+                    "join products pr on pd.id = pr.product_detail_id\n" +
                     "JOIN order_for_product ofp ON pr.id = ofp.product_id\n" +
                     "group by YEAR;";
             Query query = en.createNativeQuery(queryGetProductSoldFilterTime);
@@ -62,10 +60,10 @@ public class ProductServiceImpl implements ProductService {
                 spftList.add(spft);
             }
         } else if (filter.equals("month")) {
-            String queryGetProductSoldFilterTime = "SELECT pd.product_name, count(*) as quantity_sell,(SELECT EXTRACT(YEAR FROM ofp.created_date)) AS YEAR,\n" +
+            String queryGetProductSoldFilterTime = "SELECT pd.name, count(*) as quantity_sell,(SELECT EXTRACT(YEAR FROM ofp.created_date)) AS YEAR,\n" +
                     "EXTRACT(MONTH FROM ofp.created_date) AS MONTH \n" +
-                    "FROM product_detail pd \n" +
-                    "join products pr on pd.id = pr.product_detail\n" +
+                    "FROM productline_details pd \n" +
+                    "join products pr on pd.id = pr.product_detail_id\n" +
                     "JOIN order_for_product ofp ON pr.id = ofp.product_id\n" +
                     "group by MONTH,YEAR;";
             Query query = en.createNativeQuery(queryGetProductSoldFilterTime);
@@ -79,10 +77,10 @@ public class ProductServiceImpl implements ProductService {
                 spftList.add(spft);
             }
         } else if(filter.equals("quater")){
-            String queryGetProductSoldFilterTime = "SELECT pd.product_name, count(*) as quantity_sell,\n" +
+            String queryGetProductSoldFilterTime = "SELECT pd.name, count(*) as quantity_sell,\n" +
                     "QUARTER(ofp.created_date) AS QUATER, (SELECT EXTRACT(YEAR FROM ofp.created_date)) AS YEAR\n" +
-                    "FROM product_detail pd \n" +
-                    "join products pr on pd.id = pr.product_detail\n" +
+                    "FROM productline_details pd \n" +
+                    "join products pr on pd.id = pr.product_detail_id\n" +
                     "JOIN order_for_product ofp ON pr.id = ofp.product_id\n" +
                     "group by QUATER,YEAR;";
             Query query = en.createNativeQuery(queryGetProductSoldFilterTime);

@@ -3,21 +3,16 @@ package com.project.productmove.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * This class created at 12/5/2022 11:33:00
- *
- * @author HoàngKhôngNgủ
- */
 @Entity
-@Table(name = "errors", schema = "produce_move", catalog = "")
+@Table(name = "errors", schema = "product_move_offical", catalog = "")
 public class ErrorsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private long id;
     @Basic
-    @Column(name = "product")
-    private long product;
+    @Column(name = "product_id")
+    private long productId;
     @Basic
     @Column(name = "type")
     private int type;
@@ -48,12 +43,12 @@ public class ErrorsEntity {
         this.id = id;
     }
 
-    public long getProduct() {
-        return product;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setProduct(long product) {
-        this.product = product;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     public int getType() {
@@ -120,7 +115,7 @@ public class ErrorsEntity {
         ErrorsEntity that = (ErrorsEntity) o;
 
         if (id != that.id) return false;
-        if (product != that.product) return false;
+        if (productId != that.productId) return false;
         if (type != that.type) return false;
         if (productBatch != that.productBatch) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
@@ -135,7 +130,7 @@ public class ErrorsEntity {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (product ^ (product >>> 32));
+        result = 31 * result + (int) (productId ^ (productId >>> 32));
         result = 31 * result + type;
         result = 31 * result + (int) (productBatch ^ (productBatch >>> 32));
         result = 31 * result + (description != null ? description.hashCode() : 0);

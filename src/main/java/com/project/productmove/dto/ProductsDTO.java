@@ -3,7 +3,8 @@ package com.project.productmove.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProductsDTO {
-    @JsonProperty(value = "product_id",required = true)
+
+    @JsonProperty(value = "product_id", required = true)
     private Long id;
     private Integer status;
     private Long place;
@@ -15,18 +16,10 @@ public class ProductsDTO {
     private java.sql.Timestamp createdDate;
     private String modifiedBy;
     private java.sql.Timestamp modifiedDate;
-    private Long productDetail;
-
+    private Long productDetailId;
     @JsonProperty(value = "user_id",required = true)
     private Long userId;
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    private Integer warrantyCount;
 
     public Long getId() {
         return this.id;
@@ -116,11 +109,27 @@ public class ProductsDTO {
         this.modifiedDate = modifiedDate;
     }
 
-    public Long getProductDetail() {
-        return this.productDetail;
+    public Long getProductDetailId() {
+        return this.productDetailId;
     }
 
-    public void setProductDetail(Long productDetail) {
-        this.productDetail = productDetail;
+    public void setProductDetailId(Long productDetailId) {
+        this.productDetailId = productDetailId;
+    }
+
+    public Long getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Integer getWarrantyCount() {
+        return this.warrantyCount;
+    }
+
+    public void setWarrantyCount(Integer warrantyCount) {
+        this.warrantyCount = warrantyCount;
     }
 }

@@ -1,23 +1,23 @@
 package com.project.productmove.dto;
 
-public class ProductDetailDTO {
+public class ProductlineDetailsDTO {
     private Long id;
     private Integer type;
-    private Integer category;
+    private Integer categoryCar;
     private String createdBy;
     private java.sql.Timestamp createdDate;
     private String modifiedBy;
     private java.sql.Timestamp modifiedDate;
     private String description;
     private String imgUrl;
-    private Integer lenght;
-    private Integer width;
-    private Integer power;
-    private Integer momentum;
-    private Integer gearbox;
+    private Double lenght;
+    private Double width;
+    private String power;
+    private Integer displacement;
+    private String gearbox;
     private Integer seats;
     private String engine;
-    private String productName;
+    private String name;
 
     public Long getId() {
         return this.id;
@@ -35,12 +35,12 @@ public class ProductDetailDTO {
         this.type = type;
     }
 
-    public Integer getCategory() {
-        return this.category;
+    public Integer getCategoryCar() {
+        return this.categoryCar;
     }
 
-    public void setCategory(Integer category) {
-        this.category = category;
+    public void setCategoryCar(Integer categoryCar) {
+        this.categoryCar = categoryCar;
     }
 
     public String getCreatedBy() {
@@ -91,43 +91,43 @@ public class ProductDetailDTO {
         this.imgUrl = imgUrl;
     }
 
-    public Integer getLenght() {
+    public Double getLenght() {
         return this.lenght;
     }
 
-    public void setLenght(Integer lenght) {
+    public void setLenght(Double lenght) {
         this.lenght = lenght;
     }
 
-    public Integer getWidth() {
+    public Double getWidth() {
         return this.width;
     }
 
-    public void setWidth(Integer width) {
+    public void setWidth(Double width) {
         this.width = width;
     }
 
-    public Integer getPower() {
+    public String getPower() {
         return this.power;
     }
 
-    public void setPower(Integer power) {
+    public void setPower(String power) {
         this.power = power;
     }
 
-    public Integer getMomentum() {
-        return this.momentum;
+    public Integer getDisplacement() {
+        return this.displacement;
     }
 
-    public void setMomentum(Integer momentum) {
-        this.momentum = momentum;
+    public void setDisplacement(Integer displacement) {
+        this.displacement = displacement;
     }
 
-    public Integer getGearbox() {
+    public String getGearbox() {
         return this.gearbox;
     }
 
-    public void setGearbox(Integer gearbox) {
+    public void setGearbox(String gearbox) {
         this.gearbox = gearbox;
     }
 
@@ -147,11 +147,11 @@ public class ProductDetailDTO {
         this.engine = engine;
     }
 
-    public String getProductName() {
-        return this.productName;
+    public String getName() {
+        return this.name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

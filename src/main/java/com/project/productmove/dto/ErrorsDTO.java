@@ -2,7 +2,7 @@ package com.project.productmove.dto;
 
 public class ErrorsDTO {
     private Long id;
-    private Long product;
+    private Long productId;
     private Integer type;
     private Long productBatch;
     private String description;
@@ -19,12 +19,12 @@ public class ErrorsDTO {
         this.id = id;
     }
 
-    public Long getProduct() {
-        return this.product;
+    public Long getProductId() {
+        return this.productId;
     }
 
-    public void setProduct(Long product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Integer getType() {

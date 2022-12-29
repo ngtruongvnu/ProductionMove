@@ -1,12 +1,8 @@
 package com.project.productmove.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class UserDTO {
     private Long id;
-    private String name;
-    private int role;
-    @JsonProperty(value = "user_name",required = true)
+    private Integer role;
     private String userName;
     private String password;
     private String imgUrl;
@@ -14,6 +10,8 @@ public class UserDTO {
     private java.sql.Timestamp createdDate;
     private String modifiedBy;
     private java.sql.Timestamp modifiedDate;
+    private String firstName;
+    private String lastName;
 
     public Long getId() {
         return this.id;
@@ -23,19 +21,11 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getRole() {
+    public Integer getRole() {
         return this.role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
@@ -93,5 +83,21 @@ public class UserDTO {
 
     public void setModifiedDate(java.sql.Timestamp modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

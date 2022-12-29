@@ -3,14 +3,9 @@ package com.project.productmove.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * This class created at 12/5/2022 11:33:02
- *
- * @author HoàngKhôngNgủ
- */
 @Entity
-@Table(name = "product_detail", schema = "produce_move", catalog = "")
-public class ProductDetailEntity {
+@Table(name = "productline_details", schema = "product_move_offical", catalog = "")
+public class ProductlineDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -19,8 +14,8 @@ public class ProductDetailEntity {
     @Column(name = "type")
     private int type;
     @Basic
-    @Column(name = "category")
-    private int category;
+    @Column(name = "category_car")
+    private int categoryCar;
     @Basic
     @Column(name = "created_by")
     private String createdBy;
@@ -41,28 +36,28 @@ public class ProductDetailEntity {
     private String imgUrl;
     @Basic
     @Column(name = "lenght")
-    private int lenght;
+    private Double lenght;
     @Basic
     @Column(name = "width")
-    private int width;
+    private Double width;
     @Basic
     @Column(name = "power")
-    private int power;
+    private String power;
     @Basic
-    @Column(name = "momentum")
-    private int momentum;
+    @Column(name = "displacement")
+    private Integer displacement;
     @Basic
     @Column(name = "gearbox")
-    private int gearbox;
+    private String gearbox;
     @Basic
     @Column(name = "seats")
-    private int seats;
+    private Integer seats;
     @Basic
     @Column(name = "engine")
     private String engine;
     @Basic
-    @Column(name = "product_name")
-    private String productName;
+    @Column(name = "name")
+    private String name;
 
     public long getId() {
         return id;
@@ -80,12 +75,12 @@ public class ProductDetailEntity {
         this.type = type;
     }
 
-    public int getCategory() {
-        return category;
+    public int getCategoryCar() {
+        return categoryCar;
     }
 
-    public void setCategory(int category) {
-        this.category = category;
+    public void setCategoryCar(int categoryCar) {
+        this.categoryCar = categoryCar;
     }
 
     public String getCreatedBy() {
@@ -136,51 +131,51 @@ public class ProductDetailEntity {
         this.imgUrl = imgUrl;
     }
 
-    public int getLenght() {
+    public Double getLenght() {
         return lenght;
     }
 
-    public void setLenght(int lenght) {
+    public void setLenght(Double lenght) {
         this.lenght = lenght;
     }
 
-    public int getWidth() {
+    public Double getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(Double width) {
         this.width = width;
     }
 
-    public int getPower() {
+    public String getPower() {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(String power) {
         this.power = power;
     }
 
-    public int getMomentum() {
-        return momentum;
+    public Integer getDisplacement() {
+        return displacement;
     }
 
-    public void setMomentum(int momentum) {
-        this.momentum = momentum;
+    public void setDisplacement(Integer displacement) {
+        this.displacement = displacement;
     }
 
-    public int getGearbox() {
+    public String getGearbox() {
         return gearbox;
     }
 
-    public void setGearbox(int gearbox) {
+    public void setGearbox(String gearbox) {
         this.gearbox = gearbox;
     }
 
-    public int getSeats() {
+    public Integer getSeats() {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
 
@@ -192,12 +187,12 @@ public class ProductDetailEntity {
         this.engine = engine;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -205,25 +200,25 @@ public class ProductDetailEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductDetailEntity that = (ProductDetailEntity) o;
+        ProductlineDetailsEntity that = (ProductlineDetailsEntity) o;
 
         if (id != that.id) return false;
         if (type != that.type) return false;
-        if (category != that.category) return false;
-        if (lenght != that.lenght) return false;
-        if (width != that.width) return false;
-        if (power != that.power) return false;
-        if (momentum != that.momentum) return false;
-        if (gearbox != that.gearbox) return false;
-        if (seats != that.seats) return false;
+        if (categoryCar != that.categoryCar) return false;
         if (createdBy != null ? !createdBy.equals(that.createdBy) : that.createdBy != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (modifiedBy != null ? !modifiedBy.equals(that.modifiedBy) : that.modifiedBy != null) return false;
         if (modifiedDate != null ? !modifiedDate.equals(that.modifiedDate) : that.modifiedDate != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (imgUrl != null ? !imgUrl.equals(that.imgUrl) : that.imgUrl != null) return false;
+        if (lenght != null ? !lenght.equals(that.lenght) : that.lenght != null) return false;
+        if (width != null ? !width.equals(that.width) : that.width != null) return false;
+        if (power != null ? !power.equals(that.power) : that.power != null) return false;
+        if (displacement != null ? !displacement.equals(that.displacement) : that.displacement != null) return false;
+        if (gearbox != null ? !gearbox.equals(that.gearbox) : that.gearbox != null) return false;
+        if (seats != null ? !seats.equals(that.seats) : that.seats != null) return false;
         if (engine != null ? !engine.equals(that.engine) : that.engine != null) return false;
-        if (productName != null ? !productName.equals(that.productName) : that.productName != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
@@ -232,21 +227,21 @@ public class ProductDetailEntity {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + type;
-        result = 31 * result + category;
+        result = 31 * result + categoryCar;
         result = 31 * result + (createdBy != null ? createdBy.hashCode() : 0);
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (modifiedBy != null ? modifiedBy.hashCode() : 0);
         result = 31 * result + (modifiedDate != null ? modifiedDate.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (imgUrl != null ? imgUrl.hashCode() : 0);
-        result = 31 * result + lenght;
-        result = 31 * result + width;
-        result = 31 * result + power;
-        result = 31 * result + momentum;
-        result = 31 * result + gearbox;
-        result = 31 * result + seats;
+        result = 31 * result + (lenght != null ? lenght.hashCode() : 0);
+        result = 31 * result + (width != null ? width.hashCode() : 0);
+        result = 31 * result + (power != null ? power.hashCode() : 0);
+        result = 31 * result + (displacement != null ? displacement.hashCode() : 0);
+        result = 31 * result + (gearbox != null ? gearbox.hashCode() : 0);
+        result = 31 * result + (seats != null ? seats.hashCode() : 0);
         result = 31 * result + (engine != null ? engine.hashCode() : 0);
-        result = 31 * result + (productName != null ? productName.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }

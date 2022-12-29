@@ -3,7 +3,6 @@ package com.project.productmove.controller;
 import com.project.productmove.dto.UserDTO;
 import com.project.productmove.dto.UserLoginDTO;
 import com.project.productmove.dto.WarehouseDTO;
-import com.project.productmove.repo.UserRepo;
 import com.project.productmove.service.GeneralService;
 import com.project.productmove.service.UserService;
 import lombok.extern.log4j.Log4j2;

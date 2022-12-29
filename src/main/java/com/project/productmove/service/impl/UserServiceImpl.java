@@ -1,15 +1,15 @@
 package com.project.productmove.service.impl;
 
 import com.project.productmove.dto.CustomerDTO;
+import com.project.productmove.dto.OrderForProductDTO;
+import com.project.productmove.dto.RecallByBatchDTO;
 import com.project.productmove.dto.UserDTO;
-import com.project.productmove.dto.UserLoginDTO;
-import com.project.productmove.entity.CustomerEntity;
-import com.project.productmove.entity.UserEntity;
-import com.project.productmove.entity.WarehouseEntity;
-import com.project.productmove.repo.CustomerRepo;
+import com.project.productmove.entity.*;
 import com.project.productmove.repo.ProductRepo;
 import com.project.productmove.repo.UserRepo;
+import com.project.productmove.service.OrderForProductRepo;
 import com.project.productmove.service.UserService;
+import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +27,8 @@ import java.util.stream.Collectors;
  *
  * @author HoàngKhôngNgủ
  */
+
+@Log4j2
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -39,6 +40,9 @@ public class UserServiceImpl implements UserService {
     UserRepo userRepo;
     @Autowired
     ProductRepo productRepo;
+
+    @Autowired
+    OrderForProductRepo orderForProductRepo;
     @Override
     public List<UserDTO> getAll(){
         List<UserEntity> listE = userRepo.findAllById(1);
@@ -71,7 +75,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Long> getListProductIdByPrDetail(long productDetailId) {
         String spl = "Select pr.id from products pr join" +
-                " product_detail pd on pr.product_detail = pd.id where pr.product_detail = " + productDetailId;
+                " product_detail pd on pr.product_detail_id = pd.id where pr.product_detail_id = " + productDetailId;
         Query queryProductList = em.createNativeQuery(spl);
         List<Object> result = queryProductList.getResultList();
         List<Long> listProductId = new ArrayList<>();
@@ -92,6 +96,14 @@ public class UserServiceImpl implements UserService {
         return ListD;
     }
 
+    @Override
+    public void UpdateWarehouseAfterReceiveFromSC(long warehouseId, long productId) {
+        productRepo.updateWarehouseAfterReceiveFromSV(warehouseId,productId);
+    }
 
+    @Override
+    public void recallByBatch(RecallByBatchDTO recallByBatchDTO) {
+        productRepo.upStatusRecallByBatch(recallByBatchDTO.getBatch_id());
+    }
 
 }

@@ -3,13 +3,8 @@ package com.project.productmove.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * This class created at 12/5/2022 11:32:57
- *
- * @author HoàngKhôngNgủ
- */
 @Entity
-@Table(name = "customer", schema = "produce_move", catalog = "")
+@Table(name = "customer", schema = "product_move_offical", catalog = "")
 public class CustomerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -110,21 +105,6 @@ public class CustomerEntity {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerEntity{" +
-                "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", createdDate=" + createdDate +
-                ", createdBy='" + createdBy + '\'' +
-                ", modifiedDate=" + modifiedDate +
-                ", modifiedBy='" + modifiedBy + '\'' +
-                '}';
     }
 
     @Override

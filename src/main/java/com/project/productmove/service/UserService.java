@@ -1,8 +1,9 @@
 package com.project.productmove.service;
 
 import com.project.productmove.dto.CustomerDTO;
+import com.project.productmove.dto.OrderForProductDTO;
+import com.project.productmove.dto.RecallByBatchDTO;
 import com.project.productmove.dto.UserDTO;
-import com.project.productmove.dto.UserLoginDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,5 +20,7 @@ public interface UserService {
 
     List<UserDTO> filterByRole(int role);
 
+    void UpdateWarehouseAfterReceiveFromSC(long warehouseId,long productId);
 
+    void recallByBatch(RecallByBatchDTO recallByBatchDTO);
 }

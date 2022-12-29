@@ -4,13 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * This class created at 12/5/2022 11:33:01
- *
- * @author HoàngKhôngNgủ
- */
 @Entity
-@Table(name = "order_for_product", schema = "produce_move", catalog = "")
+@Table(name = "order_for_product", schema = "product_move_offical", catalog = "")
 public class OrderForProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

@@ -3,13 +3,8 @@ package com.project.productmove.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * This class created at 12/5/2022 11:33:01
- *
- * @author HoàngKhôngNgủ
- */
 @Entity
-@Table(name = "product_batches", schema = "produce_move", catalog = "")
+@Table(name = "product_batches", schema = "product_move_offical", catalog = "")
 public class ProductBatchesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

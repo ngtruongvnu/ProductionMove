@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WarehouseDTO {
     private Long id;
+
     @JsonProperty(value = "user_id",required = true)
     private Long userId;
     private String address;

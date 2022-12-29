@@ -1,10 +1,11 @@
 package com.project.productmove.repo;
 
-import com.project.productmove.entity.CustomerEntity;
 import com.project.productmove.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,7 +23,6 @@ public interface UserRepo extends JpaRepository<UserEntity, Integer>,UserRepoCus
 
     @Query("SELECT u FROM UserEntity u WHERE u.userName = ?1 AND u.password = ?2")
     UserEntity getUserEntityLogin(String userName, String password);
-
 
 
 }

@@ -3,13 +3,8 @@ package com.project.productmove.entity;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-/**
- * This class created at 12/5/2022 11:33:04
- *
- * @author HoàngKhôngNgủ
- */
 @Entity
-@Table(name = "products", schema = "produce_move", catalog = "")
+@Table(name = "products", schema = "product_move_offical", catalog = "")
 public class ProductsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -46,20 +41,14 @@ public class ProductsEntity {
     @Column(name = "modified_date")
     private Timestamp modifiedDate;
     @Basic
-    @Column(name = "product_detail")
-    private long productDetail;
-
+    @Column(name = "product_detail_id")
+    private long productDetailId;
     @Basic
     @Column(name = "user_id")
     private long userId;
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+    @Basic
+    @Column(name = "warranty_count")
+    private Integer warrantyCount;
 
     public long getId() {
         return id;
@@ -149,12 +138,28 @@ public class ProductsEntity {
         this.modifiedDate = modifiedDate;
     }
 
-    public long getProductDetail() {
-        return productDetail;
+    public long getProductDetailId() {
+        return productDetailId;
     }
 
-    public void setProductDetail(long productDetail) {
-        this.productDetail = productDetail;
+    public void setProductDetailId(long productDetailId) {
+        this.productDetailId = productDetailId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public Integer getWarrantyCount() {
+        return warrantyCount;
+    }
+
+    public void setWarrantyCount(Integer warrantyCount) {
+        this.warrantyCount = warrantyCount;
     }
 
     @Override
@@ -170,12 +175,15 @@ public class ProductsEntity {
         if (warrantyPeriod != that.warrantyPeriod) return false;
         if (productBatchId != that.productBatchId) return false;
         if (productCode != that.productCode) return false;
-        if (productDetail != that.productDetail) return false;
+        if (productDetailId != that.productDetailId) return false;
+        if (userId != that.userId) return false;
         if (warrantyFrom != null ? !warrantyFrom.equals(that.warrantyFrom) : that.warrantyFrom != null) return false;
         if (createdBy != null ? !createdBy.equals(that.createdBy) : that.createdBy != null) return false;
         if (createdDate != null ? !createdDate.equals(that.createdDate) : that.createdDate != null) return false;
         if (modifiedBy != null ? !modifiedBy.equals(that.modifiedBy) : that.modifiedBy != null) return false;
         if (modifiedDate != null ? !modifiedDate.equals(that.modifiedDate) : that.modifiedDate != null) return false;
+        if (warrantyCount != null ? !warrantyCount.equals(that.warrantyCount) : that.warrantyCount != null)
+            return false;
 
         return true;
     }
@@ -193,7 +201,9 @@ public class ProductsEntity {
         result = 31 * result + (createdDate != null ? createdDate.hashCode() : 0);
         result = 31 * result + (modifiedBy != null ? modifiedBy.hashCode() : 0);
         result = 31 * result + (modifiedDate != null ? modifiedDate.hashCode() : 0);
-        result = 31 * result + (int) (productDetail ^ (productDetail >>> 32));
+        result = 31 * result + (int) (productDetailId ^ (productDetailId >>> 32));
+        result = 31 * result + (int) (userId ^ (userId >>> 32));
+        result = 31 * result + (warrantyCount != null ? warrantyCount.hashCode() : 0);
         return result;
     }
 }

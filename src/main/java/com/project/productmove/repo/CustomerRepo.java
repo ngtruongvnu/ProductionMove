@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepo extends JpaRepository<CustomerEntity, Integer> {
+public interface CustomerRepo extends JpaRepository<CustomerEntity, Long> {
 
 
     @Modifying

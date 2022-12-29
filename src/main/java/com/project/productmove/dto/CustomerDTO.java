@@ -10,7 +10,7 @@ public class CustomerDTO {
     private String address;
     private Date createdDate;
     private String createdBy;
-    private java.sql.Timestamp modifiedDate;
+    private Date modifiedDate;
     private String modifiedBy;
 
     public Long getId() {
@@ -69,11 +69,11 @@ public class CustomerDTO {
         this.createdBy = createdBy;
     }
 
-    public java.sql.Timestamp getModifiedDate() {
+    public Date getModifiedDate() {
         return this.modifiedDate;
     }
 
-    public void setModifiedDate(java.sql.Timestamp modifiedDate) {
+    public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
