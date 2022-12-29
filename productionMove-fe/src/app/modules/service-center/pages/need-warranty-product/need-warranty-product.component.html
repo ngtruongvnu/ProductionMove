@@ -1,0 +1,56 @@
+<nz-tabset>
+    <nz-tab nzTitle="Theo sản phẩm">
+        <h1>Bảng sản phẩm cần bảo hành</h1>
+        <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed" #outBordered nzOuterBordered>
+            <thead>
+            <tr>
+                <th
+                    *ngFor="let column of listOfColumns"
+                    [nzSortOrder]="column.sortOrder"
+                    [nzSortFn]="column.sortFn"
+                    [nzSortDirections]="column.sortDirections"
+                    [nzShowFilter]="true"
+                    [nzFilters]="column.listOfFilter"
+                    [nzFilterFn]="column.filterFn"
+                >
+                    {{ column.name }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of filterTable.data">
+                <td>{{ data.productline }}</td>
+                <td>{{ data.productid }}</td>
+                <td>{{ data.error }}</td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </nz-tab>
+    <nz-tab nzTitle="Theo dòng sản phẩm">
+        <h1>Bảng sản phẩm cần bảo hành</h1>
+        <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed" #outBordered nzOuterBordered>
+            <thead>
+            <tr>
+                <th
+                    *ngFor="let column of listOfColumns"
+                    [nzSortOrder]="column.sortOrder"
+                    [nzSortFn]="column.sortFn"
+                    [nzSortDirections]="column.sortDirections"
+                    [nzShowFilter]="true"
+                    [nzFilters]="column.listOfFilter"
+                    [nzFilterFn]="column.filterFn"
+                >
+                    {{ column.name }}
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let data of filterTable.data">
+                <td>{{ data.productline }}</td>
+                <td>{{ data.productid }}</td>
+                <td>{{ data.error }}</td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </nz-tab>
+</nz-tabset>

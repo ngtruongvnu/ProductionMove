@@ -12,23 +12,23 @@
             </span>
         </div>
         <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+            <li nz-submenu nzOpen nzTitle="Bảo hành" nzIcon="dashboard">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a routerLink="welcome">Welcome</a>
+                        <a routerLink="need-warranty-product">Sản phẩm cần bảo hành</a>
                     </li>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Monitor</a>
-                    </li>
-                    <li nz-menu-item nzMatchRouter>
-                        <a>Workplace</a>
+                        <a routerLink="sendto-warehouse-service">Tiếp nhận bảo hành</a>
                     </li>
                 </ul>
             </li>
-            <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+            <li nz-submenu nzOpen nzTitle="Dịch vụ" nzIcon="form">
                 <ul>
                     <li nz-menu-item nzMatchRouter>
-                        <a>Basic Form</a>
+                        <a routerLink="sendback-to-agent">Gửi trả đại lý</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="impossible-fix-product">Sản phẩm không thể sửa chữa</a>
                     </li>
                 </ul>
             </li>

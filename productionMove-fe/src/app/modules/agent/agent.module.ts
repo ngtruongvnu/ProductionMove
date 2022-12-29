@@ -33,6 +33,7 @@ import { ImpossibleFixProductComponent } from './pages/impossible-fix-product/im
 import { NotificationCustomerComponent } from './pages/notification-customer/notification-customer.component';
 import { ReceiveFromServicecenterComponent } from './pages/receive-from-servicecenter/receive-from-servicecenter.component';
 import { RecallByBatchComponent } from './pages/recall-by-batch/recall-by-batch.component';
+import { SendToWarehouseServicecenterComponent } from './pages/send-to-warehouse-servicecenter/send-to-warehouse-servicecenter.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RecallByBatchComponent } from './pages/recall-by-batch/recall-by-batch.
     ImpossibleFixProductComponent,
     NotificationCustomerComponent,
     ReceiveFromServicecenterComponent,
-    RecallByBatchComponent
+    RecallByBatchComponent,
+    SendToWarehouseServicecenterComponent
   ],
     imports: [
         CommonModule,
