@@ -1,14 +1,12 @@
 package com.project.productmove.controller;
 
+import com.project.productmove.dto.ProductStatusDTO;
 import com.project.productmove.dto.Product_4_DTO;
 import com.project.productmove.dto.ProductlineDetailsDTO;
-import com.project.productmove.dto.SumProductByStatusDTO;
 import com.project.productmove.dto.UserDTO;
-import com.project.productmove.entity.ProductlineDetailsEntity;
 import com.project.productmove.service.ProductLineDetailService;
 import com.project.productmove.service.ProductService;
 import com.project.productmove.service.UserService;
-import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,10 +126,10 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/product/get-product-by-status")//chưa xong
+    @GetMapping("/product/get-product-by-status")
     ResponseEntity<Object> getProductByStatus(){
         try {
-            SumProductByStatusDTO dto = productService.getProductByStatus();
+            ProductStatusDTO dto = productService.getProductByStatus();
             log.info("getProductByStatus success");
             return ResponseEntity.ok().body(dto);
         } catch (Exception e){
@@ -139,6 +137,19 @@ public class AdminController {
             return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
         }
     }
+
+//    @GetMapping("/product/get-product-by-productline")
+//    ResponseEntity<Object> getProductByProductline(){
+//        try {
+//            List<> dto = productService.getProductByProductline();
+//            log.info("getProductByStatus success");
+//            return ResponseEntity.ok().body(dto);
+//        } catch (Exception e){
+//            log.error(e);
+//            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
+//        }
+//    }
+
 
     @GetMapping("/product")
     ResponseEntity<Object> getProducts(){
