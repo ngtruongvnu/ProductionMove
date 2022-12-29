@@ -26,6 +26,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This class created at 12/20/2022 16:25:44
@@ -178,6 +179,41 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public String insertProducts(Long user_id, Long productline_id, Long quanlity, Long place_at) {
+        ProductlineDetailsEntity pld = productLineDetailRepo.findById(productline_id).orElse(null);
+        ProductBatchesEntity productBatchesEntity = new ProductBatchesEntity();
+        productBatchesEntity.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        productBatchesEntity.setQuantity(Math.toIntExact(quanlity));
+        productBatchesEntity.setProducedAt(user_id);
+        productBatchesEntity.setCreatedBy("System");
+        productBatchesEntity = productBatchRepo.save(productBatchesEntity);
+        List<ProductsEntity> productsEntityList = new ArrayList<>();
+        for (int i = 1; i <= quanlity; i++){
+            ProductsEntity entity = new ProductsEntity();
+            entity.setCreatedBy("system");
+            entity.setStatus(0);
+            entity.setPlace(user_id);
+            entity.setProductBatchId(productBatchesEntity.getId());
+            entity.setProductDetailId(productline_id);
+            entity.setUserId(user_id);
+            entity.setPlace(place_at);
+            entity.setProductCode(null);
+            productsEntityList.add(entity);
+        }
+        System.out.println(productRepo.saveAll(productsEntityList));
+        return "ok";
+    }
+
+    @Override
+    public List<ProductsDTO> getProducts(Long user_id) {
+        List<ProductsEntity> productsEntities = productRepo.getAllByStatusAndUserId(0, user_id);
+        List<ProductsDTO> dtos = productsEntities.stream()
+                .map(e -> modelMapper.map(e, ProductsDTO.class))
+                .collect(Collectors.toList());
+        return dtos;
+    }
+
+    @Override
     public Product_4_DTO getProduct4(Long id) {
         try{
             log.info("start getProduct4");
@@ -236,6 +272,78 @@ public class ProductServiceImpl implements ProductService {
                 entity.setPlace(agentID);
             }
         }
+        productRepo.saveAll(entityList);
         return siz;
     }
+
+    @Override
+    public List<ProductsDTO> getProductError(Long user_id) {
+        List<ProductsEntity> list = productRepo.getAllByPlaceAndStatus(user_id, 7);
+        List<ProductsDTO> dtos = list.stream()
+                .map(x -> modelMapper.map(x, ProductsDTO.class)).collect(Collectors.toList());
+        return dtos;
+    }
+
+    @Override
+    public List<Object[]> getProductErrorByProductline(Long user_id) {
+        List<Object[]> list = productRepo.getProductErrorByProductline(user_id);
+        return list;
+    }
+
+    @Override
+    public String recoverByProductBatchId(Long productbatch_id) {
+        try{
+            List<ProductsEntity> entityList = productRepo.getAllByProductBatchId(productbatch_id);
+            for (ProductsEntity entity : entityList){
+                entity.setStatus(7);
+            }
+            productRepo.saveAll(entityList);
+            return "Success";
+        } catch (Exception e){
+            log.error(e);
+            return "Error";
+        }
+    }
+
+    @Override
+    public List<ErrorProductBatchDTO> getErrorByFilterProductbatch(Long user_id, Long productline_id) {
+        try{
+            List<Object[]> listSum = productRepo.countAllByUserAndProductline(user_id, productline_id);
+            List<Object[]> errorList =  productRepo.countErrorByUserAndProductline(user_id, productline_id);
+            List<ErrorProductBatchDTO> list = new ArrayList<>();
+            int vt = 0;
+            for (Object[] i : errorList){
+                if (vt >=listSum.size()) break;
+                if (i[1].equals(listSum.get(vt)[1])) {
+                    Long x = Long.parseLong(String.valueOf( i[0]));
+                    x = x * 100;
+                    Long y = Long.parseLong(String.valueOf(listSum.get(vt)[0]));
+                    list.add(new ErrorProductBatchDTO( Long.parseLong(String.valueOf(  i[1])), (float) (x/y)));
+                } else {
+                    list.add(new ErrorProductBatchDTO( Long.parseLong(String.valueOf(listSum.get(vt)[1])),0f));
+                }
+                vt++;
+            }
+            return list;
+        } catch (Exception e){
+            log.error(e);
+            return null;
+        }
+    }
+
+    @Override
+    public List<ProductThongKeDTO> getProductByAgent() {
+    return  null;
+    }
+
+    @Override
+    public List<ProductThongKeDTO> getProductByFactory() {
+        return null;
+    }
+
+    @Override
+    public List<ProductThongKeDTO> getProductByServiceCenter() {
+        return null;
+    }
+
 }

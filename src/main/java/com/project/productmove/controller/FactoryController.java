@@ -21,7 +21,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/factory")
 public class FactoryController {
-    static private Logger log = LogManager.getLogger(AdminController.class);
+    static private Logger log = LogManager.getLogger(FactoryController.class);
 
     @Autowired
     ProductBatchService productBatchService;
@@ -43,6 +43,25 @@ public class FactoryController {
         }
     }
 
+    @PostMapping("/insert-products")
+    ResponseEntity<Object> insertProducts(@RequestParam Long user_id,@RequestParam Long productline_id, @RequestParam Long quanlity, @RequestParam Long place_at)
+    {
+        try {
+
+            return ResponseEntity.ok().body(productService.insertProducts(user_id, productline_id,quanlity,place_at));
+        } catch (Exception e) {
+            log.error("Unexpected Error! (Should not be exist)");
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
+        }
+    }
+
+
+    @GetMapping("/get-products")
+    ResponseEntity<Object> getProducts(@RequestParam Long user_id){
+        return ResponseEntity.ok().body(productService.getProducts(user_id));
+    }
+
     @PostMapping("/send-to-agent/{userID}/{agentID}")
     ResponseEntity<Object> sendToAgent(@PathVariable("userID") Long userID,@PathVariable("agentID") Long agentID, @RequestBody List<Long> listId){
         try {
@@ -56,13 +75,28 @@ public class FactoryController {
         }
     }
 
-    @PostMapping("/send-to-agent2/")
-    ResponseEntity<Object> sendToAgent2(){
-        List<Integer> x = new ArrayList<>();
-        x.add(1);
-        x.add(2);
-        return ResponseEntity.ok().body(x);
+    @GetMapping("/product-error")
+    ResponseEntity<Object> getProductError(@RequestParam Long user_id){
+        return ResponseEntity.ok().body(productService.getProductError(user_id));
     }
 
+//    @GetMapping("/get-product-by-filter-productline")
+//    ResponseEntity<Object> getProductByFilterProductline(){
+//
+//    }
+    @GetMapping("/error/get-error-by-filter-productline")
+    ResponseEntity<Object> getProductErrorByProductline(@RequestParam Long user_id){
+        return ResponseEntity.ok().body(productService.getProductErrorByProductline(user_id));
+    }
+
+    @GetMapping("/get-error-by-filter-productbatch")
+    ResponseEntity<Object> getErrorByFilterProductbatch(@RequestParam Long user_id, @RequestParam Long productline_id){
+        return ResponseEntity.ok().body(productService.getErrorByFilterProductbatch(user_id, productline_id));
+    }
+
+    @PostMapping("/recover-by-product-batch-id")
+    ResponseEntity<Object> getRecoverByProductBatchId(@RequestParam Long productbatch_id){
+        return ResponseEntity.ok().body(productService.recoverByProductBatchId(productbatch_id));
+    }
 
 }

@@ -1,9 +1,6 @@
 package com.project.productmove.service;
 
-import com.project.productmove.dto.OrderForProductDTO;
-import com.project.productmove.dto.ProductStatusDTO;
-import com.project.productmove.dto.Product_4_DTO;
-import com.project.productmove.dto.SellProductFilterTime;
+import com.project.productmove.dto.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,7 +14,25 @@ public interface ProductService {
 
     ProductStatusDTO getProductByStatus();
 
+    String insertProducts(Long user_id,Long productline_id,Long quanlity,Long place_at);
+
+    List<ProductsDTO> getProducts(Long user_id);
+
     Product_4_DTO getProduct4(Long id);
 
     Integer sendToAgent(Long user_id, Long agentID, List<Long> listId);
+
+    List<ProductsDTO> getProductError(Long user_id);
+
+    List<Object[]> getProductErrorByProductline(Long user_id);
+
+    String recoverByProductBatchId(Long productbatch_id);
+
+    List<ErrorProductBatchDTO> getErrorByFilterProductbatch(Long user_id, Long productline_id);
+
+    List<ProductThongKeDTO> getProductByAgent();
+    List<ProductThongKeDTO> getProductByServiceCenter();
+    List<ProductThongKeDTO> getProductByFactory();
+
+
 }
