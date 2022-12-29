@@ -4,10 +4,10 @@ export interface ProductLine {
     description?: string;
     type: number;
     categoryCar: number;
-    length: number;
+    lenght: number;
     width: number;
-    power: number;
-    momentum: number;
+    power: string;
+    displacement: number;
     gearbox: number;
     seats: number;
     engine: string;

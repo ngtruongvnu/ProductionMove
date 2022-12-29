@@ -46,10 +46,10 @@ export class NewProductlineComponent implements OnInit {
             name: [null, [Validators.required]],
             type: [null, [Validators.required]],
             categoryCar: [null, [Validators.required]],
-            length: [null, [Validators.required]],
+            lenght: [null, [Validators.required]],
             width: [null, [Validators.required]],
             power: [null, [Validators.required]],
-            momentum: [null, [Validators.required]],
+            displacement: [null, [Validators.required]],
             gearbox: [null, [Validators.required]],
             seats: [null, [Validators.required]],
             engine: [null, [Validators.required]],
@@ -107,13 +107,16 @@ export class NewProductlineComponent implements OnInit {
 
     //todo: insert product line
     insertProductLine() {
-        this.productLinesService.insertProductLine(this.productLineForm.value).subscribe({
+        this.productLinesService.insertProductLine(this.productLineForm.value).pipe(
+
+        ).subscribe({
             next: (res) => {
                 this.saved = true;
                 this.toast.success('Thêm mới danh mục sản phẩm thành công', "Success");
             },
             error: (err) => {
-                this.toast.error(err, "Error");
+                this.toast.error("nhay vao day", "Error");
+                this.toast.error(err.message, "Error");
             }
         });
     }
