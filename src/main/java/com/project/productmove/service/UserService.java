@@ -23,4 +23,8 @@ public interface UserService {
     void UpdateWarehouseAfterReceiveFromSC(long warehouseId,long productId);
 
     void recallByBatch(RecallByBatchDTO recallByBatchDTO);
+    Boolean newCreateUser(UserDTO userDTO);
+
+    List<UserDTO> getUserByRole(Integer role);
+
 }

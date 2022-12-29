@@ -9,7 +9,8 @@ import com.project.productmove.repo.ProductRepo;
 import com.project.productmove.repo.UserRepo;
 import com.project.productmove.service.OrderForProductRepo;
 import com.project.productmove.service.UserService;
-import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,25 +29,28 @@ import java.util.stream.Collectors;
  * @author HoàngKhôngNgủ
  */
 
-@Log4j2
+
 @Service
 public class UserServiceImpl implements UserService {
+    private static Logger log = LogManager.getLogger();
 
     @PersistenceContext
     EntityManager em;
     @Autowired
-    ModelMapper modelMapper;
+    ModelMapper mapper;
     @Autowired
     UserRepo userRepo;
     @Autowired
     ProductRepo productRepo;
 
     @Autowired
+
     OrderForProductRepo orderForProductRepo;
+
     @Override
     public List<UserDTO> getAll(){
         List<UserEntity> listE = userRepo.findAllById(1);
-        List<UserDTO> ListD = listE.stream().map(UserEntity -> modelMapper.map(UserEntity,
+        List<UserDTO> ListD = listE.stream().map(UserEntity -> mapper.map(UserEntity,
                         UserDTO.class))
                 .collect(Collectors.toList());
         return ListD;
@@ -90,7 +94,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDTO> filterByRole(int role) {
         List<UserEntity> listE = userRepo.listUserEntityByRole(role);
-        List<UserDTO> ListD = listE.stream().map(UserEntity -> modelMapper.map(UserEntity,
+        List<UserDTO> ListD = listE.stream().map(UserEntity -> mapper.map(UserEntity,
                         UserDTO.class))
                 .collect(Collectors.toList());
         return ListD;
@@ -106,4 +110,31 @@ public class UserServiceImpl implements UserService {
         productRepo.upStatusRecallByBatch(recallByBatchDTO.getBatch_id());
     }
 
+    public Boolean newCreateUser(UserDTO userDTO) {
+        try {
+            UserEntity entity = mapper.map(userDTO, UserEntity.class);
+            UserEntity savedEntity = userRepo.save(entity);
+            log.info("Created " + savedEntity);
+            return true;
+        } catch (Exception e) {
+            log.error(e);
+            log.error("Can't create new user " + userDTO.toString());
+            return false;
+        }
+    }
+
+    @Override
+    public List<UserDTO> getUserByRole(Integer role) {
+        try {
+            List<UserEntity> entityList = userRepo.findUserEntitiesByRole(role);
+            List<UserDTO> userDTOS = entityList.stream()
+                    .map(x -> mapper.map(x, UserDTO.class))
+                    .collect(Collectors.toList());
+            return userDTOS;
+        } catch (Exception e) {
+            log.error(e);
+            log.error("Error in getUserByRole " + role);
+            return null;
+        }
+    }
 }
