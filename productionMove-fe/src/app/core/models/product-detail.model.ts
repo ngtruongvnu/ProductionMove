@@ -1,6 +1,7 @@
 import {ProductLine} from "./product-line.model";
+import {ProductBatch} from "./product-batch.model";
 
-export interface Product {
+export interface ProductDetail {
     id: number;
     status: number;
     place: string;
@@ -9,8 +10,9 @@ export interface Product {
     warrantyCount?: number;
     productCode: string;
     productLine: ProductLine;
-    productName: string;
-    productBatchId: number;
+    productBatch: ProductBatch;
+    sellBy?: string;
+    customerName?: string;
     createdAt: string;
     modifiedAt: string;
     createdBy: string;

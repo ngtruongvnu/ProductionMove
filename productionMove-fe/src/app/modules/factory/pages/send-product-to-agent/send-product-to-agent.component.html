@@ -1,7 +1,7 @@
 <nz-breadcrumb>
-    <nz-breadcrumb-item>Admin</nz-breadcrumb-item>
+    <nz-breadcrumb-item>Factory</nz-breadcrumb-item>
     <nz-breadcrumb-item>
-        <a>Theo dõi sản phẩm</a>
+        <a>Xuất sản phẩm cho đại lý</a>
     </nz-breadcrumb-item>
 </nz-breadcrumb>
 
@@ -9,7 +9,9 @@
     <nz-card>
         <div class="content">
             <div class="title">
-                <h3>Theo dõi sản phẩm</h3>
+                <div></div>
+                <h3>Danh sách sản phẩm</h3>
+                <div></div>
             </div>
             <nz-table
                 #sortTable
@@ -32,24 +34,17 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let data of sortTable.data">
-                    <td>{{ data.productCode }}</td>
-                    <td>{{ data.productName  }}</td>
-                    <td>{{ data.warrantyPeriod }}</td>
-                    <td>{{ data.warrantyCount }}</td>
-                    <td>{{ getCarStatus(data.status)}}</td>
-                    <td>
-                        <div class="action-btns">
-                            <button
-                                nz-button
-                                nzType="primary"
-                                nzSize="small"
-                                (click)="negative('products/' + data.id.toString())"
-                            >Xem chi tiết</button>
-                        </div>
-                    </td>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.productName }}</td>
+                    <td>{{ data.quantity }}</td>
                 </tr>
                 </tbody>
             </nz-table>
+
+            <div class="action-btns">
+                <nz-select nzPlaceHolder="Chọn đại lý nhận xe"></nz-select>
+                <button nz-button nzType="primary">Xuất kho</button>
+            </div>
         </div>
     </nz-card>
 </div>
