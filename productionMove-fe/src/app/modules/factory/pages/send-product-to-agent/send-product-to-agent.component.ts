@@ -92,16 +92,17 @@ export class SendProductToAgentComponent implements OnInit {
     }
 
     sendProductToAgent() {
-        const data = [...this.setOfCheckedId];
-        if (data.length === 0 || this.agentUserId < 0) {
+        const dataId = [...this.setOfCheckedId];
+        console.log(dataId.length);
+        if (dataId.length === 0 || this.agentUserId < 0) {
             this.toast.error("Vui lòng chọn sản phẩm và đại lý", "Error");
             return;
         }
         this.productsService.sendProductsToAgent(
             this.userService.getCurrentUser().id,
-            this.agentUserId, data).subscribe({
+            this.agentUserId, dataId).subscribe({
             next: (data) => {
-                this.toast.success(`Xuất kho thành công ${data.length}`, "Success");
+                this.toast.success(`Xuất kho thành công ${dataId.length} sản phẩm`, "Success");
                 this.getProducts();
             },
             error: (error) => {

@@ -112,15 +112,9 @@
                     <nz-form-item>
                         <nz-form-label>Ảnh</nz-form-label>
                         <nz-form-control>
-<!--                            <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/"-->
-<!--                                       [nzFileList]="fileList"-->
-<!--                                       [nzLimit]="1"-->
-<!--                                       [nzShowUploadList]="false"-->
-<!--                                       (nzChange)="handleChange($event)">-->
-<!--                                <button nz-button>-->
-<!--                                    <i class="anticon anticon-upload"></i>Upload-->
-<!--                                </button>-->
-<!--                            </nz-upload>-->
+                            <nz-form-control>
+                                <img nz-image class="img-car" nzSrc="{{productLineForm.get('imgUrl')?.value}}">
+                            </nz-form-control>
                         </nz-form-control>
                     </nz-form-item>
                 </div>

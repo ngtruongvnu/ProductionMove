@@ -52,7 +52,6 @@ export class AddNewProductComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.isLoading = true;
         this.getProductBatches();
         this.getListProductLines();
         this.getListWarehouse();
@@ -77,17 +76,16 @@ export class AddNewProductComponent implements OnInit {
             nzOkText: 'Đồng ý',
             nzOnOk: () => {
                 this.addNewProductBatch();
-                console.log(this.formNewBatch.value);
             }
         });
     }
 
     getProductBatches() {
+        this.isLoading = true;
         const userId = this.userService.getCurrentUser().id;
         this.productBatchService.getAllProductBatches(userId).subscribe({
             next: (data) => {
                 this.listOfData = data;
-                console.log(this.listOfData);
                 this.toast.success('Tải thành công danh sách lô sản phẩm', 'Success');
                 this.isLoading = false;
             },
@@ -123,7 +121,8 @@ export class AddNewProductComponent implements OnInit {
     addNewProductBatch() {
         this.productBatchService.insertProductBatch(this.formNewBatch.value).subscribe({
             next: (data) => {
-                this.toast.success(data, 'Success');
+                this.getProductBatches();
+                this.toast.success("Thêm thành công lô sản phẩm mới", 'Success');
             },
             error: (err) => {
                 this.toast.error(err.message, 'Error');
