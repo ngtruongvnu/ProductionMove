@@ -46,17 +46,18 @@ public class AgentController {
 
     @PostMapping("/sell-product")
     ResponseEntity<Object> sellProduct(@RequestParam("user_id") String userId,
-                                       @RequestBody OrderForProductDTO orderForProductDTO){
-        log.info(orderForProductDTO.getCustomerId());
-        log.info(orderForProductDTO.getProductId());
-        productService.setStatusAndSaveRecordProductSold(orderForProductDTO,2);
+                                       @RequestBody SellProductDTO sellProductDTO){
+
+        productService.setStatusAndSaveRecordProductSold(sellProductDTO,2);
         //userService.customerReceiveWarrantyProduct(1,orderForProductDTO.getProductId());
-        return ResponseEntity.ok(orderForProductDTO);
+        return ResponseEntity.ok("success");
     }
 
     @PostMapping("/warranty_product")
-    ResponseEntity<Object> warranty_product(@RequestParam("user_id") String userId){
-        return null;
+    ResponseEntity<Object> warranty_product(@RequestParam("user_id") String userId,
+                                            @RequestBody ProductsDTO productsDTO){
+        userService.customerReceiveWarrantyProduct(3,productsDTO.getId());
+        return ResponseEntity.ok("success");
     }
 
     @GetMapping("/customer_receive_warranty_product")

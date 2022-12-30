@@ -111,14 +111,19 @@ public class ProductServiceImpl implements ProductService {
         return spftList;
     }
 
+
+
     @Override
-    public void setStatusAndSaveRecordProductSold(OrderForProductDTO orderForProductDTO, int status) {
-        productRepo.upDateStatus(status, orderForProductDTO.getProductId());
-        OrderForProductEntity orderForProductEntity = modelMapper.map(orderForProductDTO, OrderForProductEntity.class);
+    public void setStatusAndSaveRecordProductSold(SellProductDTO sellProductDTO, int status) {
+        productRepo.upDateStatus(status, sellProductDTO.getProductId());
+        OrderForProductEntity orderForProductEntity = new OrderForProductEntity();
+        orderForProductEntity.setProductId(sellProductDTO.getProductId());
+        orderForProductEntity.setCustomerId(5);
+        orderForProductEntity.setSellBy(6);
         LocalDateTime current = LocalDateTime.now();
         Instant instant = current.atZone(ZoneId.systemDefault()).toInstant();
         Date date = Date.from(instant);
-        orderForProductEntity.setCreatedDate((Timestamp) date);
+        orderForProductEntity.setCreatedDate(date);
         orderForProductEntityRepo.save(orderForProductEntity);
     }
 
