@@ -207,7 +207,6 @@ public class ProductServiceImpl implements ProductService {
             ProductsEntity entity = new ProductsEntity();
             entity.setCreatedBy("system");
             entity.setStatus(0);
-            entity.setPlace(user_id);
             entity.setProductBatchId(productBatchesEntity.getId());
             entity.setProductDetailId(productline_id);
             entity.setUserId(user_id);
@@ -282,9 +281,10 @@ public class ProductServiceImpl implements ProductService {
         Integer siz = 0;
         List<ProductsEntity> entityList = productRepo.findAllById(listId);
         for (ProductsEntity entity : entityList){
-            if (entity.getPlace() == user_id) {
+            if (entity.getUserId() == user_id) {
                 siz++;
-                entity.setPlace(agentID);
+                entity.setUserId(agentID);
+                entity.setStatus(1);
             }
         }
         productRepo.saveAll(entityList);

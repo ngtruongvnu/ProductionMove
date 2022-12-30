@@ -26,6 +26,11 @@
             >
                 <thead>
                 <tr>
+                    <th
+                        [nzChecked]="checked"
+                        [nzIndeterminate]="indeterminate"
+
+                    ></th>
                     <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare"
                         [nzSortPriority]="column.priority">
                         {{ column.title }}
@@ -34,16 +39,28 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let data of sortTable.data">
+                    <td
+                        [nzChecked]="setOfCheckedId.has(data.product_id)"
+                        (nzCheckedChange)="updateCheckedSet(data.product_id, $event)"
+                    ></td>
                     <td>{{ data.productCode }}</td>
                     <td>{{ data.productBatchId }}</td>
-                    <td>{{ data.product_name }}</td>
+                    <td>{{ data.productDetailId }}</td>
+                    <td>{{ data.warrantyPeriod }}</td>
                 </tr>
                 </tbody>
             </nz-table>
 
             <div class="action-btns">
-                <nz-select nzPlaceHolder="Chọn đại lý nhận xe"></nz-select>
-                <button nz-button nzType="primary">Xuất kho</button>
+                <nz-select nzPlaceHolder="Chọn đại lý nhận xe" [(ngModel)]="agentUserId">
+                    <nz-option *ngFor="let agent of listOfAgentUser" [nzLabel]="agent.user_name"
+                               [nzValue]="agent.id"></nz-option>
+                </nz-select>
+                <button
+                    nz-button
+                    nzType="primary"
+                    (click)="sendProductToAgent()"
+                >Xuất kho</button>
             </div>
         </div>
     </nz-card>

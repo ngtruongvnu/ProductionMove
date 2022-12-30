@@ -12,6 +12,7 @@ export interface Product {
     product_code: string;
     productCode: string;
     product_name: string;
+    productDetailId: number;
     productBatchId: number;
     createdDate: string;
     modifiedDate: string;
