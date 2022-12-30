@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 /**
  * This class was created at 12/28/2022 15:15:43
  *
- * @author Minh.LN
+ * @author Tuan Vu
  */
 @Service
 public class ProductBatchServiceImpl implements ProductBatchService {

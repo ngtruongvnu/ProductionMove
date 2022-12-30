@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * This class was created at 12/22/2022 15:01:42
  *
- * @author Minh.LN
+ * @author Tuan Vu
  */
 @RestController
 @RequestMapping("api/v1")

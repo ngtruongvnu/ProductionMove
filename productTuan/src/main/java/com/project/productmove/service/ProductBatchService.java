@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * This class was created at 12/28/2022 15:11:28
  *
- * @author Minh.LN
+ * @author Tuan Vu
  */
 
 public interface ProductBatchService {

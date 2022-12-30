@@ -8,7 +8,7 @@ import lombok.ToString;
 /**
  * This class was created at 12/29/2022 23:50:50
  *
- * @author Minh.LN
+ * @author Tuan Vu
  */
 @Data
 @ToString

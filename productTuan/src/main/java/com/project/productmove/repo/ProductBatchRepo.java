@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This class was created at 12/27/2022 01:51:05
  *
- * @author Minh.LN
+ * @author Tuan Vu
  */
 
 public interface ProductBatchRepo extends JpaRepository<ProductBatchesEntity, Long> {
