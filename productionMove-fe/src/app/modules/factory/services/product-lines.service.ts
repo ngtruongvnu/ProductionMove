@@ -8,12 +8,13 @@ import {ProductLine} from "../../../core/models/product-line.model";
 })
 export class ProductLinesService {
 
+    private API_URL = 'http://localhost:8087/api/v1/productline';
     constructor(
         private http: HttpClient
     ) {
     }
 
     getProductLines() : Observable<ProductLine[]> {
-        return this.http.get<ProductLine[]>('https://636135a1af66cc87dc262c92.mockapi.io/api/v1/productlines');
+        return this.http.get<ProductLine[]>(`${this.API_URL}/get-all`);
     }
 }

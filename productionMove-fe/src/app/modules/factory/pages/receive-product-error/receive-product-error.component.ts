@@ -34,7 +34,7 @@ export class ReceiveProductErrorComponent implements OnInit {
     ];
     pagesize: number = 6;
     isLoading: boolean = false;
-    listOfData: ProductBatch[] = [];
+    listOfData: Product[] = [];
 
     constructor(
         private productsService: ProductsService,

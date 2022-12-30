@@ -8,13 +8,18 @@ import {Warehouse} from "../models/warehouse.model";
 })
 export class WarehouseService {
 
+    private API_URL = 'http://localhost:8087/api/v1/warehouse';
     constructor(
         private http: HttpClient
     ) {
     }
 
     getWarehouses(userId: number) : Observable<Warehouse[]> {
-        return this.http.get<Warehouse[]>(`http://localhost:8080/api/warehouse/${userId}`);
+        return this.http.get<Warehouse[]>(`${this.API_URL}/get-all`, {
+            params: {
+                user_id: userId.toString()
+            }
+        });
     }
 
 }

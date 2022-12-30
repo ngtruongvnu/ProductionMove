@@ -45,11 +45,11 @@ public class FactoryController {
     }
 
     @PostMapping("/insert-products")
-    ResponseEntity<Object> insertProducts(@RequestParam Long user_id,@RequestParam Long productline_id, @RequestParam Long quanlity, @RequestParam Long place_at)
+    ResponseEntity<Object> insertProducts(@RequestParam Long user_id,@RequestParam Long productline_id, @RequestParam Long quantity, @RequestParam Long place_at)
     {
         try {
 
-            return ResponseEntity.ok().body(productService.insertProducts(user_id, productline_id,quanlity,place_at));
+            return ResponseEntity.ok().body(productService.insertProducts(user_id, productline_id,quantity,place_at));
         } catch (Exception e) {
             log.error("Unexpected Error! (Should not be exist)");
             log.error(e);

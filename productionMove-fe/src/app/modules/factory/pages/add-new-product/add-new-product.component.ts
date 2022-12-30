@@ -7,7 +7,7 @@ import {WarehouseService} from "../../../../core/services/warehouse.service";
 import {UserService} from "../../../../core/services/user.service";
 import {Warehouse} from "../../../../core/models/warehouse.model";
 import {ProductBatchesService} from "../../services/product-batches.service";
-import {ProductBatch} from "../../../../core/models/product-batch.model";
+import {ProductBatchFactory} from "../../../../core/models/product-batch.model";
 import {ProductLinesService} from "../../services/product-lines.service";
 
 @Component({
@@ -19,22 +19,22 @@ export class AddNewProductComponent implements OnInit {
     listOfColumn = [
         {
             title: 'ID lô sản phẩm',
-            compare: (a: ProductBatch, b: ProductBatch) => a.id - b.id,
+            compare: (a: ProductBatchFactory, b: ProductBatchFactory) => a.productBatch.id - b.productBatch.id,
             priority: 1
         },
         {
             title: 'Tên dòng sản phẩm',
-            compare: (a: ProductBatch, b: ProductBatch) => a.productName.localeCompare(b.productName),
+            compare: (a: ProductBatchFactory, b: ProductBatchFactory) => a.productlineDetail.name.localeCompare(b.productlineDetail.name),
             priority: 3,
         },
         {
             title: 'Số lượng sản phẩm',
-            compare: (a: ProductBatch, b: ProductBatch) => a.quantity - b.quantity,
+            compare: (a: ProductBatchFactory, b: ProductBatchFactory) => a.productBatch.quantity - b.productBatch.quantity,
             priority: 2
         }
     ];
     pagesize: number = 8;
-    listOfData: ProductBatch[] = [];
+    listOfData: ProductBatchFactory[] = [];
     isLoading: boolean = false;
     formNewBatch !: UntypedFormGroup;
     warehouses: Warehouse[] = [];
@@ -57,9 +57,10 @@ export class AddNewProductComponent implements OnInit {
         this.getListProductLines();
         this.getListWarehouse();
         this.formNewBatch = this.fb.group({
-            productName: [null, [Validators.required]],
+            productline_id: [null, [Validators.required]],
             quantity: [null, [Validators.required]],
-            warehouseId: [null, [Validators.required]],
+            place_at: [null, [Validators.required]],
+            user_id: [this.userService.getCurrentUser().id, [Validators.required]],
         })
     }
 
@@ -69,18 +70,24 @@ export class AddNewProductComponent implements OnInit {
             nzContent: nzContent,
             nzMaskClosable: false,
             nzClosable: false,
+            nzStyle: {
+                minWidth: '500px'
+            },
             nzCancelText: 'Hủy',
             nzOkText: 'Đồng ý',
             nzOnOk: () => {
                 this.addNewProductBatch();
+                console.log(this.formNewBatch.value);
             }
         });
     }
 
     getProductBatches() {
-        this.productBatchService.getAllProductBatches().subscribe({
+        const userId = this.userService.getCurrentUser().id;
+        this.productBatchService.getAllProductBatches(userId).subscribe({
             next: (data) => {
                 this.listOfData = data;
+                console.log(this.listOfData);
                 this.toast.success('Tải thành công danh sách lô sản phẩm', 'Success');
                 this.isLoading = false;
             },

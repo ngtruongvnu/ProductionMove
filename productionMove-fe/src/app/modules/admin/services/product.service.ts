@@ -20,4 +20,8 @@ export class ProductService {
     getProductDetail(id: number) : Observable<ProductDetail> {
         return this.http.get<ProductDetail>(`${this.API_URL}/${id}`);
     }
+
+    statisticProductByStatus() : Observable<any> {
+        return this.http.get(`${this.API_URL}/get-product-by-status`);
+    }
 }

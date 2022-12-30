@@ -36,7 +36,7 @@ export class ProductsComponent implements OnInit {
         },
         {
             title: 'Trạng thái',
-            compare: (a: Product, b: Product) => a.status - b.status,
+            compare: (a: Product, b: Product) => a.product_status - b.product_status,
             priority: 5
         },
         {

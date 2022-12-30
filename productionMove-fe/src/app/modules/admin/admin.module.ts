@@ -27,6 +27,7 @@ import {NzInputModule} from "ng-zorro-antd/input";
 import {NzSelectModule} from "ng-zorro-antd/select";
 import { NewProductlineComponent } from './pages/new-productline/new-productline.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import {NzImageModule} from "ng-zorro-antd/image";
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
         ReactiveFormsModule,
         NzInputModule,
         NzSelectModule,
+        NzImageModule,
     ],
     providers: [
         NzModalService

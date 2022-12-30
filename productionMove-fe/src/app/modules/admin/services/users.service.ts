@@ -8,12 +8,19 @@ import {User} from "../../../core/models/user.model";
 })
 export class UsersService {
 
+    private API_URL = 'http://localhost:8087/api/v1';
     constructor(
         private http: HttpClient
     ) {
     }
 
     getAllUsers() : Observable<User[]> {
-        return this.http.get<User[]>('http://localhost:8080/api/users');
+        return this.http.get<User[]>(`${this.API_URL}/user/get-all`);
+    }
+
+    addNewWarehouse(warehouse: any) {
+        return this.http.post(`${this.API_URL}/warehouse/insert-warehouse`, warehouse, {
+            responseType: 'text'
+        });
     }
 }

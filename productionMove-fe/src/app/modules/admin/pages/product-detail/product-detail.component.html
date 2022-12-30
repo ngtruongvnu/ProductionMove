@@ -10,20 +10,55 @@
 
 <div class="container">
     <nz-card>
-        <div nz-row [nzGutter]="[24, 24]">
+        <div nz-row [nzGutter]="24">
             <div nz-col nzSpan="12">
-                <span nz-row [nzGutter]="24">Tên sản phẩm: {{ productDetail.product_line.name}}</span>
+                <span nz-row>Tên dòng sản phẩm: {{ productDetail.product_line.name}}</span>
                 <div nz-row [nzGutter]="12">
                     <span nz-col nzSpan="12">Loại sản phẩm: {{ getCardType(productDetail.product_line.type)}}</span>
                     <span nz-col nzSpan="12">Dòng sản phẩm: {{ getCarCategory(productDetail.product_line.categoryCar)}}</span>
+                </div>
+                <div nz-row [nzGutter]="12">
+                    <span nz-col nzSpan="8">Số ghế: {{ productDetail.product_line.seats}}</span>
+                    <span nz-col nzSpan="8">Chiều dài: {{ productDetail.product_line.lenght}} (m)</span>
+                    <span nz-col nzSpan="8">Chiều rộng: {{ productDetail.product_line.width}} (m)</span>
+                </div>
+                <div nz-row [nzGutter]="12">
+                    <span nz-col nzSpan="8">Động cơ: {{ productDetail.product_line.engine}}</span>
+                    <span nz-col nzSpan="8">Dung tích xi lanh: {{ productDetail.product_line.displacement}}</span>
+                    <span nz-col nzSpan="8">Sức mạnh: {{ productDetail.product_line.power}}</span>
+                </div>
+                <div nz-row [nzGutter]="12">
+                    <span nz-col nzSpan="12">ID sản phẩm: {{productDetail.product.product_id}}</span>
+                    <span nz-col nzSpan="12">Mã sản phẩm: {{productDetail.product.productCode}}</span>
+                </div>
+                <div nz-row [nzGutter]="12">
+                    <span nz-col nzSpan="8">Thời gian bảo hành: {{productDetail.product.warrantyPeriod}} (năm)</span>
+                    <span nz-col nzSpan="9">Bắt đầu bảo hành: {{productDetail.product.warrantyFrom | date: 'dd/MM/yyyy'}}</span>
+                    <span nz-col nzSpan="7">Số lần đã bảo hành: {{productDetail.product.warrantyCount}}</span>
+                </div>
+                <div nz-row [nzGutter]="12">
+                    <span nz-col nzSpan="12">Mã lô sản phẩm: {{productDetail.product_batch.id}}</span>
+                    <span nz-col nzSpan="12">Ngày sản xuất: {{productDetail.product.createdDate | date: 'dd/MM/yyyy'}}</span>
                 </div>
             </div>
             <div nz-col nzSpan="12">
                 <div nz-row>
                     <span>Ảnh:</span>
-                    <img src="{{productDetail.product_line.imgUrl}}" />
+                    <img class="imageDesc" nz-image nzSrc="{{productDetail.product_line.imgUrl}}" alt=""/>
+                </div>
+                <div nz-row>
+                    <span>Trạng thái: {{getProductStatus(productDetail.product.status)}}</span>
+                </div>
+                <div nz-row *ngIf="productDetail.sellBy">
+                    <span>Đại lý bán sản phẩm: {{productDetail.sellBy}}</span>
+                </div>
+                <div nz-row *ngIf="productDetail.customer">
+                    <span>Khách hành: {{productDetail.customer}}</span>
                 </div>
             </div>
+        </div>
+        <div nz-row class="btn-right">
+            <button nz-button nzType="primary" (click)="back()">Trở lại</button>
         </div>
     </nz-card>
 </div>

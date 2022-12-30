@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import Chart from "chart.js/auto";
+import {ProductService} from "../../services/product.service";
 
 @Component({
     selector: 'app-product-statistics',
@@ -8,39 +9,58 @@ import Chart from "chart.js/auto";
 })
 export class ProductStatisticsComponent implements OnInit {
     public chart: any = {};
-    constructor() {
+    dataProductByStatus !: any;
+    constructor(
+        private productService: ProductService
+    ) {
     }
 
     ngOnInit(): void {
-        this.createChart();
+        this.getProductByStatus();
     }
 
-    createChart() {
-        this.chart = new Chart("barChart", {
-            type: 'bar', //this denotes tha type of chart
+    /**
+     * Get product by status
+     * After get data, call createChart() to create chart
+     */
+    getProductByStatus() {
+        this.productService.statisticProductByStatus().subscribe(data => {
+            this.dataProductByStatus = data;
+            this.createChartForStatisticByStatus(this.dataProductByStatus);
+        });
+    }
 
+    /**
+     * Create chart for statistic product by status
+     * @param data : data from API
+     */
+    createChartForStatisticByStatus(data : any) {
+        const dataLabel = Object.keys(data).filter(key => data[key] > 0);
+        const dataValue = Object.values(data).filter((value) => {
+            return (value as number) > 0
+        });
+        this.chart = new Chart("barChart", {
+            type: 'bar',
             data: {// values on X-Axis
-                labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-                    '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ],
+                labels: dataLabel,
                 datasets: [
                     {
-                        label: "Sales",
-                        data: ['467','576', '572', '79', '92',
-                            '574', '573', '576'],
-                        backgroundColor: 'blue'
-                    },
-                    {
-                        label: "Profit",
-                        data: ['542', '542', '536', '327', '17',
-                            '0.00', '538', '541'],
-                        backgroundColor: 'limegreen'
+                        label: "Sản phẩm",
+                        data: dataValue,
+                        backgroundColor: "#3cba9f",
                     }
                 ]
             },
             options: {
-                aspectRatio:2.5
+                aspectRatio:2.5,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Thống kê sản phẩm theo trạng thái'
+                    }
+                }
             }
-
         });
     }
+
 }

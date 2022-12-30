@@ -4,6 +4,7 @@ import {ProductService} from "../../services/product.service";
 import {ProductDetail} from "../../../../core/models/product-detail.model";
 import {ToastrService} from "ngx-toastr";
 import {TYPES, CATEGORIES} from "../../../../core/constants/productlines";
+import {PRODUCT_STATUS} from "../../../../core/constants/products";
 
 @Component({
     selector: 'app-product-detail',
@@ -44,5 +45,9 @@ export class ProductDetailComponent implements OnInit {
 
     getCarCategory(category: number) {
         return CATEGORIES[category];
+    }
+
+    getProductStatus(status: number) {
+        return PRODUCT_STATUS[status];
     }
 }

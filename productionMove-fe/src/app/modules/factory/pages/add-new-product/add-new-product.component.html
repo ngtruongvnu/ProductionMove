@@ -18,11 +18,11 @@
                 <ng-template #tplContent>
                     <form nz-form [formGroup]="formNewBatch">
                         <nz-form-item>
-                            <nz-form-label [nzSpan]="8" nzFor="productName" nzRequired>Tên dòng sản phẩm</nz-form-label>
-                            <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng chọn tên dòng sản phẩm">
+                            <nz-form-label nzFor="productName" nzRequired>Tên dòng sản phẩm</nz-form-label>
+                            <nz-form-control nzErrorTip="Vui lòng chọn tên dòng sản phẩm">
                                 <nz-select
                                     id="productName"
-                                    formControlName="productName"
+                                    formControlName="productline_id"
                                     nzPlaceHolder="Chọn tên dòng sản phẩm"
                                 >
                                     <nz-option
@@ -33,18 +33,18 @@
                             </nz-form-control>
                         </nz-form-item>
                         <nz-form-item>
-                            <nz-form-label [nzSpan]="8" nzRequired nzFor="quantity">Số lượng sản phẩm</nz-form-label>
-                            <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng nhập số lượng sản phẩm">
-                                <input id="quantity" type="text" nz-input formControlName="quantity"
+                            <nz-form-label nzRequired nzFor="quantity">Số lượng sản phẩm</nz-form-label>
+                            <nz-form-control nzErrorTip="Vui lòng nhập số lượng sản phẩm">
+                                <input id="quantity" nz-input formControlName="quantity" type="number"
                                        placeholder="Nhập số lượng sản phẩm của lô"/>
                             </nz-form-control>
                         </nz-form-item>
                         <nz-form-item>
-                            <nz-form-label [nzSpan]="8" nzFor="warehouse" nzRequired>Chọn địa điểm kho lưu trữ</nz-form-label>
-                            <nz-form-control [nzSpan]="12" nzErrorTip="Vui lòng địa điểm chọn kho lưu trữ">
+                            <nz-form-label nzFor="warehouse" nzRequired>Chọn địa điểm kho lưu trữ</nz-form-label>
+                            <nz-form-control nzErrorTip="Vui lòng địa điểm chọn kho lưu trữ">
                                 <nz-select
                                     id="warehouse"
-                                    formControlName="warehouseId"
+                                    formControlName="place_at"
                                     nzPlaceHolder="Chọn kho lưu trữ"
                                 >
                                     <nz-option
@@ -78,9 +78,9 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let data of sortTable.data">
-                    <td>{{ data.id }}</td>
-                    <td>{{ data.productName }}</td>
-                    <td>{{ data.quantity }}</td>
+                    <td>{{ data.productBatch.id }}</td>
+                    <td>{{ data.productlineDetail.name }}</td>
+                    <td>{{ data.productBatch.quantity }}</td>
                 </tr>
                 </tbody>
             </nz-table>

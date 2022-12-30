@@ -11,10 +11,15 @@
             <div class="title">
                 <div></div>
                 <h3>Quản lý cơ sở</h3>
-                <button nz-button nzType="primary" (click)="negative('add-product-line')">
-                    <i nz-icon nzType="plus"></i>
-                    Thêm mới
-                </button>
+                <div>
+                    <button
+                        nz-button
+                        nzType="primary"
+                        (click)="negative('add-user')">
+                        <i nz-icon nzType="plus"></i>
+                        Thêm mới
+                    </button>
+                </div>
             </div>
             <nz-table
                 #sortTable
@@ -38,28 +43,43 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let data of sortTable.data">
-                    <td>{{ data.name }}</td>
-                    <td>{{ data.type ? getCarType(1) : getCarType(0) }}</td>
-                    <td>{{ getCarCategory(data.categoryCar)}}</td>
-                    <td>{{ data.engine }}</td>
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.user_name}}</td>
+                    <td>{{getFullName(data.firstName, data.lastName)}}</td>
+                    <td>{{getRole(data.role)}}</td>
                     <td>
                         <div class="action-btns">
                             <button
+                                class="add-btn"
                                 nz-button
                                 nzType="primary"
                                 nzSize="small"
-                                (click)="negative('product-lines/' + data.id.toString())"
-                            >Xem chi tiết</button>
+                                (click)="addNewWarehouse(tplContent, data.id, data.user_name)"
+                            >Thêm mới nhà kho</button>
                             <button
+                                class="edit-btn"
                                 nz-button
                                 nzType="primary"
-                                nzSize="small" nzDanger
-                                (click)="onDelete(data.id)">Xóa</button>
+                                nzDanger
+                                nzSize="small"
+                            >
+                                Xóa
+                            </button>
                         </div>
                     </td>
                 </tr>
                 </tbody>
             </nz-table>
         </div>
+        <ng-template #tplContent let-params>
+            <div>
+                <span>Thêm mới kho hàng cho cơ sở: {{params.username}}</span>
+            </div>
+            <div>
+                <label for="warehouse">Địa chỉ kho hàng :</label>
+                <input id="warehouse" nz-input placeholder="Nhập địa chỉ kho hàng:" [(ngModel)]="address"/>
+            </div>
+        </ng-template>
+
     </nz-card>
 </div>

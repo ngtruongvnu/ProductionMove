@@ -150,27 +150,35 @@ public class ProductServiceImpl implements ProductService {
                     break;
                 case 3:
                     dto.setLoi_can_bao_hanh(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 4:
                     dto.setDang_sua_chua_bao_hanh(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 5:
                     dto.setDa_bao_hanh_xong(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 6:
                     dto.setDa_tra_lai_bao_hanh_cho_khach_hang(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 7:
                     dto.setLoi_can_tra_ve_nha_may(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 8:
-                    dto.setLoi_can_tra_ve_nha_may(i);
+                    dto.setLoi_da_dua_ve_co_so_san_xuat(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 9:
                     dto.setLoi_can_trieu_hoi(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 10:
                     dto.setHet_thoi_gian_bao_hanh(i);
+                    dto.setDa_ban(dto.getDa_ban()+i);
                     break;
                 case 11:
                     dto.setTra_lai_co_so_san_xuat(i);
@@ -193,6 +201,9 @@ public class ProductServiceImpl implements ProductService {
         productBatchesEntity = productBatchRepo.save(productBatchesEntity);
         List<ProductsEntity> productsEntityList = new ArrayList<>();
         for (int i = 1; i <= quanlity; i++){
+            long leftLimit = 1L;
+            long rightLimit = 1000000000000000000L;
+            long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
             ProductsEntity entity = new ProductsEntity();
             entity.setCreatedBy("system");
             entity.setStatus(0);
@@ -201,7 +212,7 @@ public class ProductServiceImpl implements ProductService {
             entity.setProductDetailId(productline_id);
             entity.setUserId(user_id);
             entity.setPlace(place_at);
-            entity.setProductCode(null);
+            entity.setProductCode(generatedLong);
             productsEntityList.add(entity);
         }
         System.out.println(productRepo.saveAll(productsEntityList));
