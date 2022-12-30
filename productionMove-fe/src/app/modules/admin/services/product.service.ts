@@ -9,7 +9,7 @@ import {ProductDetail} from "../../../core/models/product-detail.model";
 })
 export class ProductService {
 
-    private readonly API_URL = 'https://636135a1af66cc87dc262c92.mockapi.io/api/v1/products';
+    private readonly API_URL = 'http://localhost:8087/api/v1/product';
     constructor(private http: HttpClient) {
     }
 

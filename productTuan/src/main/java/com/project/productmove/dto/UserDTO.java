@@ -1,8 +1,12 @@
 package com.project.productmove.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserDTO {
     private Long id;
     private Integer role;
+
+    @JsonProperty(value = "user_name",required = true)
     private String userName;
     private String password;
     private String imgUrl;

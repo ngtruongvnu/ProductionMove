@@ -4,6 +4,7 @@ import {AuthService} from "../../../core/services/auth.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../../core/services/user.service";
 import {ToastrService} from "ngx-toastr";
+import {ROLES} from "../../../core/constants/roles";
 
 @Component({
     selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.validateForm = this.fb.group({
-            username: [null, [Validators.required]],
+            user_name: [null, [Validators.required]],
             password: [null, [Validators.required]]
         });
     }
@@ -35,12 +36,13 @@ export class LoginComponent implements OnInit {
             this.isLoading = true;
             console.log('submit', this.validateForm.value);
             this.authService.login(this.validateForm.value).subscribe({
-                next: () => {
-                    console.log('success');
-                    this.router.navigateByUrl(`/${this.userService.getCurrentUser().role}`);
+                next: (data) => {
+                    localStorage.setItem('currentUser', JSON.stringify(data));
+                    console.log(ROLES[this.userService.getCurrentUser().role]);
+                    this.router.navigateByUrl(`/${ROLES[this.userService.getCurrentUser().role]}`);
                 },
                 error: (err) => {
-                    this.toastify.error(err);
+                    this.toastify.error(err.error, 'Error');
                     this.isLoading = false;
                 },
                 complete: () => {

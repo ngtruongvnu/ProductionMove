@@ -89,20 +89,6 @@ public class ProductLineDetailServiceImpl implements ProductLineDetailService {
     }
 
     @Override
-    public Boolean deletePLD(long id) {
-        try {
-            Boolean isExist = pLDetailRepo.existsById((long) id);
-            if (!isExist) return false;
-            pLDetailRepo.deleteById((long) id);
-            return true;
-        } catch (Exception e) {
-            log.error(e);
-            log.error("ERROR with delete productline detail" + id);
-            return null;
-        }
-    }
-
-    @Override
     public ProductlineDetailsDTO getPLDByID(Long id) {
         try {
             ProductlineDetailsEntity entity = pLDetailRepo.findById(id).orElse(null);

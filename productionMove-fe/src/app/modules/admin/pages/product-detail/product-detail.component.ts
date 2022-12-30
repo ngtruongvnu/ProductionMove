@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
 import {ProductDetail} from "../../../../core/models/product-detail.model";
 import {ToastrService} from "ngx-toastr";
+import {TYPES, CATEGORIES} from "../../../../core/constants/productlines";
 
 @Component({
     selector: 'app-product-detail',
@@ -35,5 +36,13 @@ export class ProductDetailComponent implements OnInit {
 
     back() {
         this.route.navigateByUrl('/admin/products');
+    }
+
+    getCardType(type: number) {
+        return TYPES[type];
+    }
+
+    getCarCategory(category: number) {
+        return CATEGORIES[category];
     }
 }

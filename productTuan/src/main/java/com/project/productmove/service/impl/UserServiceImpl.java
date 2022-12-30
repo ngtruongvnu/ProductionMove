@@ -137,4 +137,18 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
+
+    @Override
+    public List<UserDTO> getAllUserByRole(){
+        try {
+            List<UserEntity> entityList = userRepo.findAll();
+            List<UserDTO> userDTOS = entityList.stream()
+                    .map(x -> mapper.map(x, UserDTO.class))
+                    .collect(Collectors.toList());
+            return userDTOS;
+        } catch (Exception e) {
+            log.error(e);
+            return null;
+        }
+    }
 }

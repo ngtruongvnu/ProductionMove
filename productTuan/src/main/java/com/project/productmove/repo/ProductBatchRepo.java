@@ -3,6 +3,7 @@ package com.project.productmove.repo;
 import com.project.productmove.entity.ProductBatchesEntity;
 import com.project.productmove.entity.ProductlineDetailsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ import java.util.List;
 public interface ProductBatchRepo extends JpaRepository<ProductBatchesEntity, Long> {
 
     List<ProductBatchesEntity> findByProducedAt(Long idUser);
+
+
 }

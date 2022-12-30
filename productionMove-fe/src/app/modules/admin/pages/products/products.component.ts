@@ -15,30 +15,29 @@ export class ProductsComponent implements OnInit {
     // @ts-ignore
     listOfColumn = [
         {
-            title: 'Mã sản phẩm',
-            compare: (a: Product, b: Product) => a.productCode.localeCompare(b.productCode),
-            priority: false
-        },
-        {
-            title: 'Tên sản phẩm',
-            compare: (a: Product, b: Product) => a.productName.localeCompare(b.productName),
-            priority: false
-        },
-        {
-            title: 'Thời gian bảo hành',
-            compare: (a: Product, b: Product) => a.warrantyPeriod - b.warrantyPeriod,
+            title: 'ID sản phẩm',
+            compare: (a: Product, b: Product) => a.product_id - b.product_id,
             priority: 1
         },
         {
-            title: 'Số lần bảo hành',
-            // @ts-ignore
-            compare: (a: Product, b: Product) => a?.warrantyCount - b?.warrantyCount,
+            title: 'Mã sản phẩm',
+            compare: (a: Product, b: Product) => a.product_code.localeCompare(b.product_code),
             priority: 2
+        },
+        {
+            title: 'Tên sản phẩm',
+            compare: (a: Product, b: Product) => a.product_name.localeCompare(b.product_name),
+            priority: 3
+        },
+        {
+            title: 'Số lần bảo hành',
+            compare: (a: Product, b: Product) => a.so_lan_bao_hanh - b.so_lan_bao_hanh,
+            priority: 4
         },
         {
             title: 'Trạng thái',
             compare: (a: Product, b: Product) => a.status - b.status,
-            priority: 3
+            priority: 5
         },
         {
             title: "Hành động",

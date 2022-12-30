@@ -26,5 +26,6 @@ public interface UserService {
     Boolean newCreateUser(UserDTO userDTO);
 
     List<UserDTO> getUserByRole(Integer role);
+    List<UserDTO> getAllUserByRole();
 
 }

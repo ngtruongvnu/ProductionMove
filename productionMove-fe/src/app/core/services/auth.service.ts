@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, of, throwError} from "rxjs";
+import {map, Observable, of, throwError} from "rxjs";
 import {UserService} from "./user.service";
+import {HttpClient} from "@angular/common/http";
 
 interface ILoginContext {
     username: string;
@@ -9,22 +10,11 @@ interface ILoginContext {
 
 interface IUserInfo {
     username: string;
-    password: string;
     firstName: string;
     lastName: string;
     token: string;
-    role: string;
+    role: number;
     id: string;
-}
-
-const defaultUser : IUserInfo = {
-    username: "tuanvu",
-    password: "123456",
-    firstName: 'Tuan',
-    lastName: "Vu",
-    token: "123456789",
-    role: "admin",
-    id: "123"
 }
 
 @Injectable({
@@ -32,18 +22,17 @@ const defaultUser : IUserInfo = {
 })
 export class AuthService {
     token: string = '';
+    private API_URL = 'http://localhost:8087/api/v1/user/login';
 
-    constructor(private userService : UserService) {
+    constructor(
+        private userService : UserService,
+        private http : HttpClient
+    ) {
     }
 
-    login(loginContext: ILoginContext) : Observable<IUserInfo> {
-        const isDefaultUser = loginContext.username === defaultUser.username && loginContext.password === defaultUser.password;
-        if (isDefaultUser) {
-            localStorage.setItem('currentUser', JSON.stringify(defaultUser));
-            return of(defaultUser);
-        }
+    login(loginContext: ILoginContext) {
 
-        return throwError('Invalid username or password');
+        return this.http.post<IUserInfo>(this.API_URL, loginContext);
     }
 
     logout() : Observable<boolean> {

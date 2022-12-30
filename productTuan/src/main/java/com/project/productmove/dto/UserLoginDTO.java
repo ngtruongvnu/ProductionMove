@@ -1,8 +1,28 @@
 package com.project.productmove.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserLoginDTO {
     private Long id;
-    private String name;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    private String firstName;
+    private String lastName;
 
     public Long getId() {
         return id;
@@ -12,13 +32,6 @@ public class UserLoginDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getRole() {
         return role;

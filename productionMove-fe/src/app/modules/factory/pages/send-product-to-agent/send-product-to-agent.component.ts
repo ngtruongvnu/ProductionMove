@@ -13,7 +13,7 @@ export class SendProductToAgentComponent implements OnInit {
     listOfColumn = [
         {
             title: 'Mã sản phẩm',
-            compare: (a: Product, b: Product) => a.productCode.localeCompare(b.productCode),
+            compare: (a: Product, b: Product) => a.product_code.localeCompare(b.product_code),
             priority: 1
         },
         {
@@ -23,7 +23,7 @@ export class SendProductToAgentComponent implements OnInit {
         },
         {
             title: 'Tên dòng sản phẩm',
-            compare: (a: Product, b: Product) => a.productName.localeCompare(b.productName),
+            compare: (a: Product, b: Product) => a.product_name.localeCompare(b.product_name),
             priority: 3,
         },
         {

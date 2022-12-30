@@ -27,7 +27,7 @@ public class ProductsEntity {
     private long productBatchId;
     @Basic
     @Column(name = "product_code")
-    private long productCode;
+    private Long productCode;
     @Basic
     @Column(name = "created_by")
     private String createdBy;
@@ -102,7 +102,7 @@ public class ProductsEntity {
         return productCode;
     }
 
-    public void setProductCode(long productCode) {
+    public void setProductCode(Long productCode) {
         this.productCode = productCode;
     }
 

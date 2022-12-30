@@ -34,10 +34,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let data of sortTable.data">
-                    <td>{{ data.productCode }}</td>
-                    <td>{{ data.productName  }}</td>
-                    <td>{{ data.warrantyPeriod }}</td>
-                    <td>{{ data.warrantyCount }}</td>
+                    <td>{{ data.product_id}}</td>
+                    <td>{{ data.product_code }}</td>
+                    <td>{{ data.product_name  }}</td>
+                    <td>{{ data.so_lan_bao_hanh }}</td>
                     <td>{{ getCarStatus(data.status)}}</td>
                     <td>
                         <div class="action-btns">
@@ -45,7 +45,7 @@
                                 nz-button
                                 nzType="primary"
                                 nzSize="small"
-                                (click)="negative('products/' + data.id.toString())"
+                                (click)="negative('products/' + data.product_id.toString())"
                             >Xem chi tiết</button>
                         </div>
                     </td>

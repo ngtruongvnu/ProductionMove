@@ -19,8 +19,6 @@ public interface ProductLineDetailService {
 
     Boolean updatePLD(ProductlineDetailsDTO dto);
 
-    Boolean deletePLD(long id);
-
     ProductlineDetailsDTO getPLDByID(Long id);
 
 

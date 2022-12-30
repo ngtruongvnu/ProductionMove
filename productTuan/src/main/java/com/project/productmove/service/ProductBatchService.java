@@ -1,6 +1,6 @@
 package com.project.productmove.service;
 
-import com.project.productmove.dto.ProductBatchesDTO;
+import com.project.productmove.dto.ProductBatchesAndProduclineDTO;
 
 import java.util.List;
 
@@ -11,6 +11,6 @@ import java.util.List;
  */
 
 public interface ProductBatchService {
-    List<ProductBatchesDTO> getProductBatche(Long idUser);
+    List<ProductBatchesAndProduclineDTO> getProductBatche(Long idUser);
 
 }

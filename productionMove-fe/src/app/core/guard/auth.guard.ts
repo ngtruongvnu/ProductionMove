@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import {Observable} from "rxjs";
 import {UserService} from "../services/user.service";
+import {ROLES} from "../constants/roles";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -22,7 +23,7 @@ export class AuthGuard implements CanActivate {
             state.url = '/login';
             this.router.navigateByUrl(state.url);
         }
-        if (currentUser && currentUser.role === role) {
+        if (currentUser && ROLES[currentUser.role] === role) {
             route.data = currentUser;
             return true;
         }

@@ -7,3 +7,23 @@
         <a>Chi tiết sản phẩm</a>
     </nz-breadcrumb-item>
 </nz-breadcrumb>
+
+<div class="container">
+    <nz-card>
+        <div nz-row [nzGutter]="[24, 24]">
+            <div nz-col nzSpan="12">
+                <span nz-row [nzGutter]="24">Tên sản phẩm: {{ productDetail.product_line.name}}</span>
+                <div nz-row [nzGutter]="12">
+                    <span nz-col nzSpan="12">Loại sản phẩm: {{ getCardType(productDetail.product_line.type)}}</span>
+                    <span nz-col nzSpan="12">Dòng sản phẩm: {{ getCarCategory(productDetail.product_line.categoryCar)}}</span>
+                </div>
+            </div>
+            <div nz-col nzSpan="12">
+                <div nz-row>
+                    <span>Ảnh:</span>
+                    <img src="{{productDetail.product_line.imgUrl}}" />
+                </div>
+            </div>
+        </div>
+    </nz-card>
+</div>
