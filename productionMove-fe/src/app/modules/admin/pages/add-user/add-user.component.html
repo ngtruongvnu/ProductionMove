@@ -7,6 +7,79 @@
 
 <div class="container">
     <nz-card>
-
+        <form nz-form [formGroup]="newUserForm" (ngSubmit)="submit($event)">
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="username">Tên đăng nhập</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Nhập tên đăng nhập!">
+                    <input nz-input formControlName="username" id="username"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Mật khẩu</nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Nhập mật khẩu!">
+                    <input
+                        nz-input
+                        id="password"
+                        formControlName="password"
+                    />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label
+                    [nzSm]="6"
+                    [nzXs]="24"
+                    nzFor="role"
+                    nzRequired
+                >
+                    <span>Vai trò trong hệ thống</span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Nhập tên">
+                    <nz-select
+                        id="role"
+                        formControlName="role"
+                        nzPlaceHolder="Chọn vai trò"
+                        nzShowSearch
+                        nzAllowClear
+                    >
+                        <nz-option
+                            *ngFor="let role of roleUser"
+                            [nzLabel]="role.label"
+                            [nzValue]="role.value"
+                        ></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label
+                    [nzSm]="6"
+                    [nzXs]="24"
+                    nzFor="firstname"
+                    nzRequired
+                >
+                    <span>Họ, tên đệm </span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Nhập họ, tên đệm">
+                    <input nz-input id="firstname" formControlName="firstname"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label
+                    [nzSm]="6"
+                    [nzXs]="24"
+                    nzFor="lastname"
+                    nzRequired
+                >
+                    <span>Tên </span>
+                </nz-form-label>
+                <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Nhập tên">
+                    <input nz-input id="lastname" formControlName="lastname"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row class="register-area">
+                <nz-form-control [nzSpan]="14" [nzOffset]="6">
+                    <button nz-button nzType="primary">Cấp mới</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
     </nz-card>
 </div>
