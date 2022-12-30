@@ -199,6 +199,7 @@ public class ProductServiceImpl implements ProductService {
             entity.setUserId(user_id);
             entity.setPlace(place_at);
             entity.setProductCode(null);
+            entity.setWarrantyPeriod(2);
             productsEntityList.add(entity);
         }
         System.out.println(productRepo.saveAll(productsEntityList));
@@ -334,13 +335,36 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductThongKeDTO> getProductByAgent() {
-    return  null;
+    List<Object[]> objectList = productRepo.getSumProducByAgent();
+    List <ProductThongKeDTO> productThongKeDTOS = new ArrayList<>();
+    for (Object[] i : objectList){
+        ProductThongKeDTO dto = new ProductThongKeDTO();
+        String name = (String) i[0];
+        dto.setUsername(name);
+        Integer ton_kho = Integer.valueOf(i[1].toString()) ;
+        dto.setTon_kho(ton_kho);
+        Integer da_ban = Integer.valueOf(i[2].toString()) ;
+        dto.setDa_ban(da_ban);
+        productThongKeDTOS.add(dto);
+    }
+    return  productThongKeDTOS;
     }
 
     @Override
     public List<ProductThongKeDTO> getProductByFactory() {
-
-        return null;
+        List<Object[]> objectList = productRepo.getProductByFactory();
+        List <ProductThongKeDTO> productThongKeDTOS = new ArrayList<>();
+        for (Object[] i : objectList){
+            ProductThongKeDTO dto = new ProductThongKeDTO();
+            String name = (String) i[0];
+            dto.setUsername(name);
+            Integer da_san_xuat = Integer.valueOf(i[1].toString()) ;
+            dto.setDa_san_xuat(da_san_xuat);
+            Integer ton_kho = Integer.valueOf(i[2].toString());
+            dto.setTon_kho(ton_kho);
+            productThongKeDTOS.add(dto);
+        }
+        return  productThongKeDTOS;
     }
 
     @Override
@@ -381,7 +405,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductThongKeDTO> getProductByServiceCenter() {
-        return null;
+        List<Object[]> objectList = productRepo.getProductByServiceCenter();
+        List <ProductThongKeDTO> productThongKeDTOS = new ArrayList<>();
+        for (Object[] i : objectList){
+            ProductThongKeDTO dto = new ProductThongKeDTO();
+            String name = (String) i[0];
+            dto.setUsername(name);
+            Integer dang_bao_hanh = Integer.valueOf(i[1].toString()) ;
+            dto.setDang_bao_hanh(dang_bao_hanh);
+            productThongKeDTOS.add(dto);
+        }
+        return  productThongKeDTOS;
     }
 
 }
