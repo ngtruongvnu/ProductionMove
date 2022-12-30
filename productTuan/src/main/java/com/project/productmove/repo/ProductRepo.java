@@ -52,4 +52,48 @@ public interface ProductRepo extends JpaRepository<ProductsEntity, Long>,Product
     Long productBatchId(Long productId);
 
 
+    List<ProductsEntity> getAllByPlaceAndStatus(Long user_id, Integer status);
+
+    @Query(value = "SELECT  COUNT(*), e.description FROM products p JOIN errors e ON p.id = e.product_id WHERE p.product_detail_id =?1 GROUP BY e.`type`", nativeQuery = true)
+    List<Object[]> getProductErrorByProductline(Long user_id);
+
+    List<ProductsEntity> getAllByProductBatchId(Long productbatch_id);
+
+    @Query(value = "SELECT COUNT(*), p.product_batch_id FROM products p WHERE p.user_id = ?1 AND p.product_detail_id = ?2 \n" +
+            "GROUP BY p.product_batch_id\n" +
+            "ORDER BY p.product_batch_id", nativeQuery = true)
+    List<Object[]> countAllByUserAndProductline(Long user_id, Long productline_id);
+
+    @Query(value = "SELECT COUNT(*), p.product_batch_id  FROM products p WHERE p.`status` >=3 AND p.status <=9  and p.user_id = ?1 AND p.product_detail_id = ?2 GROUP BY p.product_batch_id ORDER BY p.product_batch_id", nativeQuery = true)
+    List<Object[]> countErrorByUserAndProductline(Long user_id, Long productline_id);
+
+    List<ProductsEntity> getAllByStatusAndUserId(Integer status, Long user_id);
+
+    @Query(value = "SELECT u.user_name, x.ton_kho, COUNT(*) AS da_ban\n" +
+            "FROM  products p \n" +
+            "JOIN (SELECT COUNT(*) AS ton_kho, p.user_id AS user_id FROM products p  \n" +
+            "WHERE  p.status = 1\n" +
+            "GROUP BY p.user_id) AS X \n" +
+            "ON p.user_id = x.user_id\n" +
+            "JOIN user u ON p.user_id = u.id\n" +
+            "WHERE u.role = 3 AND p.status >=2 AND p.status <= 10\n" +
+            "GROUP BY p.user_id", nativeQuery = true)
+    List<Object[]> getSumProducByAgent();
+
+    @Query(value = "SELECT u.user_name, COUNT(*) AS dang_bao_hanh\n" +
+            "FROM  products p \n" +
+            "JOIN user u ON p.user_id = u.id\n" +
+            "WHERE u.role = 2 AND p.status =  4\n" +
+            "GROUP BY p.user_id", nativeQuery = true)
+    List<Object[]> getProductByServiceCenter();
+
+    @Query(value = "SELECT u.user_name,SUM(pb.quantity) AS da_san_xuat, X.ton_kho FROM product_batches pb \n" +
+            "JOIN (SELECT COUNT(1) AS ton_kho, p.user_id FROM products p WHERE p.`status`=0 GROUP BY p.user_id)\n" +
+            "AS x ON x.user_id = pb.produced_at\n" +
+            "JOIN user u ON u.id = pb.produced_at\n" +
+            "GROUP BY pb.produced_at", nativeQuery = true)
+    List<Object[]>getProductByFactory();
+
+
+    List<ProductsEntity> findAllByProductDetailId(Long productline_id);
 }

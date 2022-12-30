@@ -2,11 +2,11 @@ package com.project.productmove.controller;
 
 
 
-
 import com.project.productmove.dto.ProductStatusDTO;
 import com.project.productmove.dto.Product_4_DTO;
 import com.project.productmove.dto.ProductlineDetailsDTO;
 import com.project.productmove.dto.UserDTO;
+import com.project.productmove.dto.*;
 import com.project.productmove.service.ProductLineDetailService;
 import com.project.productmove.service.ProductService;
 import com.project.productmove.service.UserService;
@@ -115,6 +115,19 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/user/get-all")
+    ResponseEntity<Object> getAllUser() {
+        try {
+            List<UserDTO> dto = userService.getAllUserByRole();
+            log.info("get productline {} ok", dto);
+            return ResponseEntity.ok().body(dto);
+        } catch (Exception e) {
+            log.error("Unexpected Error! (Should not be exist)");
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
+        }
+    }
+
     @GetMapping("/user/get-user-by-filter")
     ResponseEntity<Object> getUserByFiler(@RequestParam Integer role) {
         try {
@@ -141,6 +154,40 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/product/get-product-by-agent")
+    ResponseEntity<Object> getProductByAgent(){
+        try {
+            List<ProductThongKeDTO> dto = productService.getProductByAgent();
+            log.info("getProductByAgent success");
+            return ResponseEntity.ok().body(dto);
+        } catch (Exception e){
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! ");
+        }
+    }
+    @GetMapping("/product/get-product-by-service-center")
+    ResponseEntity<Object> getProductByServiceCenter(){
+        try {
+            List<ProductThongKeDTO> dto = productService.getProductByServiceCenter();
+            log.info("getProductByServiceCenter success");
+            return ResponseEntity.ok().body(dto);
+        } catch (Exception e){
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! ");
+        }
+    }
+    @GetMapping("/product/get-product-by-factory")
+    ResponseEntity<Object> getProductByFactory(){
+        try {
+            List<ProductThongKeDTO> dto = productService.getProductByFactory();
+            log.info("getProductByFactory success");
+            return ResponseEntity.ok().body(dto);
+        } catch (Exception e){
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! ");
+        }
+    }
+
 //    @GetMapping("/product/get-product-by-productline")
 //    ResponseEntity<Object> getProductByProductline(){
 //        try {
@@ -156,15 +203,14 @@ public class AdminController {
 
     @GetMapping("/product")
     ResponseEntity<Object> getProducts(){
-//        try {
-//            SumProductByStatusDTO dto = productService.getProductByStatus();
-//            log.info("getProductByStatus success");
-//            return ResponseEntity.ok().body(dto);
-//        } catch (Exception e){
-//            log.error(e);
-//            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
-//        }
-        return null;
+        try {
+            List<ProductsInfooDto> dtoList = productService.getInfoProducts();
+            log.info("getProductByStatus success");
+            return ResponseEntity.ok().body(dtoList);
+        } catch (Exception e){
+            log.error(e);
+            return ResponseEntity.internalServerError().body("Unexpected Error! (Should not be exist)");
+        }
     }
 
     @GetMapping("/product/{id}")
@@ -180,5 +226,8 @@ public class AdminController {
             return ResponseEntity.internalServerError().body("Unexpected Error!");
         }
     }
+
+
+
 
 }
