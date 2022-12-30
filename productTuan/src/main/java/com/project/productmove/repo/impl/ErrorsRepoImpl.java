@@ -24,6 +24,16 @@ public class ErrorsRepoImpl implements ErrorRepoCustom {
     }
 
     @Override
+    public List<Object[]> getErrorProductByWarehouse(long warehouseId) {
+        String queryGetErrorProductByWarehouse = "SELECT pd.name,er.product_id,er.description FROM errors er \n" +
+                "JOIN products pr ON pr.id = er.product_id\n" +
+                "JOIN productline_details pd ON pr.product_detail_id = pd.id WHERE pr.place = "+warehouseId;
+        Query query = en.createNativeQuery(queryGetErrorProductByWarehouse);
+        List<Object[]> result = query.getResultList();
+        return result;
+    }
+
+    @Override
     public List<Object[]> getErrorProductToFilter() {
         String queryGetErrorProductToFilter = "SELECT pd.name,er.product_id,er.description FROM errors er \n" +
                 "JOIN products pr ON pr.id = er.product_id\n" +
@@ -32,4 +42,6 @@ public class ErrorsRepoImpl implements ErrorRepoCustom {
         List<Object[]> result = query.getResultList();
         return result;
     }
+
+
 }

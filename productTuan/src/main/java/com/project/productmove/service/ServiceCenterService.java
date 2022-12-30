@@ -16,7 +16,11 @@ public interface ServiceCenterService {
     List<ErrorFilterByProductLineDTO> getListProductLineError();
     void sendToWarehouseServiceDTO(long warehouseId, long userId, long productId);
 
+    List<ErrorFilterByProductDTO> getListProductErrorByWarehouse(long warehouseId);
 
+    List<ProductWarrantyDTO> getListWarrantyProduct(long userId);
+
+    void errorGenerate(ErrorsDTO errorsDTO);
 
 
 }

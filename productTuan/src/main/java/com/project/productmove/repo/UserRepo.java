@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface UserRepo extends JpaRepository<UserEntity, Integer>,UserRepoCustom{
+public interface UserRepo extends JpaRepository<UserEntity, Long>,UserRepoCustom{
 
     @Query("SELECT u FROM UserEntity u WHERE u.id = ?1")
     UserEntity getUserById(long id);

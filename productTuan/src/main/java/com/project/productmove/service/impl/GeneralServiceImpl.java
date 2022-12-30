@@ -46,7 +46,9 @@ public class GeneralServiceImpl implements GeneralService {
     public UserLoginDTO getUserLoginDTO(UserDTO userDTO) {
         log.info(userDTO.getUserName()+ "   " +userDTO.getPassword());
         UserEntity userEntity = userRepo.getUserEntityLogin(userDTO.getUserName(),userDTO.getPassword());
+        log.info(userEntity.getPassword());
         UserLoginDTO userLoginDTO = modelMapper.map(userEntity, UserLoginDTO.class);
+        log.info(userLoginDTO.getUserName());
         return userLoginDTO;
     }
 
@@ -54,7 +56,6 @@ public class GeneralServiceImpl implements GeneralService {
     public Boolean checkUserExistById(long userId) {
         UserEntity userEntity = userRepo.getUserById(userId);
         if(userEntity == null) return false;
-
         return true;
     }
 

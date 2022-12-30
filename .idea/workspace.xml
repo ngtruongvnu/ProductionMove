@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="311399cc-c533-41a9-bb30-89c6037fc1d3" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2IGwfAb9kiUctHr1mpwA342sUff" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JPA.DatabaseSchemaImportDialog": "a3032592-7d28-4061-ac60-9e3a82696859",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "D:/productMove/productmove/productmove/productTuan",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "fileTemplates",
+    "spring.configuration.checksum": "0a7ce8bf720e6e65d4e8f06bac6fdd88"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\productMove\productmove\productmove" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.project.productmove.service.impl" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.project.productmove.service" />
+    </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="com.project.productmove.entity" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ProductmoveApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="productmove" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.productmove.ProductmoveApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="311399cc-c533-41a9-bb30-89c6037fc1d3" name="Changes" comment="" />
+      <created>1669821331943</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669821331943</updated>
+      <workItem from="1669821333304" duration="3056000" />
+      <workItem from="1670214322839" duration="2118000" />
+      <workItem from="1670219928829" duration="314000" />
+      <workItem from="1670237971800" duration="1057000" />
+      <workItem from="1670302296008" duration="3475000" />
+      <workItem from="1670309540035" duration="2803000" />
+      <workItem from="1670569026883" duration="568000" />
+      <workItem from="1670570025326" duration="668000" />
+      <workItem from="1671155783041" duration="7517000" />
+      <workItem from="1671175507267" duration="7200000" />
+      <workItem from="1671246700860" duration="820000" />
+      <workItem from="1671263233450" duration="8788000" />
+      <workItem from="1671280977917" duration="5813000" />
+      <workItem from="1671353054733" duration="3266000" />
+      <workItem from="1671375102984" duration="1341000" />
+      <workItem from="1671377058190" duration="4136000" />
+      <workItem from="1671384120010" duration="2987000" />
+      <workItem from="1671414286681" duration="32000" />
+      <workItem from="1671424760849" duration="593000" />
+      <workItem from="1671433015407" duration="4286000" />
+      <workItem from="1671437684144" duration="4297000" />
+      <workItem from="1671467350388" duration="2869000" />
+      <workItem from="1671501101880" duration="6326000" />
+      <workItem from="1671513531728" duration="658000" />
+      <workItem from="1671519820814" duration="11367000" />
+      <workItem from="1671543885494" duration="238000" />
+      <workItem from="1671546433673" duration="8801000" />
+      <workItem from="1671587126784" duration="623000" />
+      <workItem from="1671596644955" duration="30000" />
+      <workItem from="1671596745610" duration="336000" />
+      <workItem from="1671608752259" duration="6828000" />
+      <workItem from="1671628257951" duration="2522000" />
+      <workItem from="1671635417777" duration="3320000" />
+      <workItem from="1671690577324" duration="304000" />
+      <workItem from="1671693542427" duration="4203000" />
+      <workItem from="1671705435554" duration="1943000" />
+      <workItem from="1671712287021" duration="645000" />
+      <workItem from="1671713108352" duration="12277000" />
+      <workItem from="1671761410126" duration="8000000" />
+      <workItem from="1671779725897" duration="1878000" />
+      <workItem from="1671784039984" duration="6433000" />
+      <workItem from="1671810643109" duration="1975000" />
+      <workItem from="1671849007045" duration="1021000" />
+      <workItem from="1671867784083" duration="236000" />
+      <workItem from="1671955004770" duration="1823000" />
+      <workItem from="1671981314060" duration="6606000" />
+      <workItem from="1672019221810" duration="5873000" />
+      <workItem from="1672025505403" duration="207000" />
+      <workItem from="1672045161698" duration="1009000" />
+      <workItem from="1672046223005" duration="1777000" />
+      <workItem from="1672050760260" duration="953000" />
+      <workItem from="1672065353576" duration="5218000" />
+      <workItem from="1672105782885" duration="602000" />
+      <workItem from="1672107777540" duration="2924000" />
+      <workItem from="1672111627782" duration="1977000" />
+      <workItem from="1672129141424" duration="980000" />
+      <workItem from="1672161325975" duration="1228000" />
+      <workItem from="1672196297966" duration="593000" />
+      <workItem from="1672213118203" duration="2407000" />
+      <workItem from="1672223633060" duration="1586000" />
+      <workItem from="1672239711594" duration="5788000" />
+      <workItem from="1672295416473" duration="9396000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/project/productmove/service/UserService.java</url>
+          <line>18</line>
+          <properties class="com.project.productmove.service.UserService" method="getListProductIdByPrDetail">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

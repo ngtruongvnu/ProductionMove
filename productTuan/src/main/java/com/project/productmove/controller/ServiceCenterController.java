@@ -1,9 +1,6 @@
 package com.project.productmove.controller;
 
-import com.project.productmove.dto.ErrorFilterByProductDTO;
-import com.project.productmove.dto.ErrorFilterByProductLineDTO;
-import com.project.productmove.dto.ProductsDTO;
-import com.project.productmove.dto.SendToWarehouseServiceDTO;
+import com.project.productmove.dto.*;
 import com.project.productmove.service.ServiceCenterService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,15 +50,17 @@ public class ServiceCenterController {
     @PostMapping("/send_to_warehouse_service")
     ResponseEntity<Object> sendToWarehouseService(@RequestParam("user_id") long userId,
                                                   @RequestBody SendToWarehouseServiceDTO sendToWarehouseServiceDTO){
+        List<ErrorFilterByProductDTO> result1 = new ArrayList<>();
         try {
             for(long stws : sendToWarehouseServiceDTO.getProductIdList()) {
                 serviceCenterService.sendToWarehouseServiceDTO(sendToWarehouseServiceDTO.getWarehouseId(),
                         userId,stws);
             }
+            result1 = serviceCenterService.getListProductErrorByWarehouse(sendToWarehouseServiceDTO.getWarehouseId());
         } catch (Exception e) {
             return new ResponseEntity<Object>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return ResponseEntity.ok("Chuyển sản phẩm về warehouse ttbh thành công");
+        return ResponseEntity.ok(result1);
     }
 
     @PostMapping("/sendback_to_agent")
@@ -84,6 +83,30 @@ public class ServiceCenterController {
             return new ResponseEntity<Object>(e, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return ResponseEntity.ok("Chuyển sản phẩm về nhà máy thành công");
+    }
+
+    @GetMapping("/get-list-warranty-product")
+    ResponseEntity<Object> getListWarrantyProduct(@RequestParam("user_id") long userId){
+        List <ProductWarrantyDTO> productWarrantyDTOList;
+        try {
+            productWarrantyDTOList = serviceCenterService.getListWarrantyProduct(userId);
+        } catch (Exception e) {
+            return new ResponseEntity<Object>(e, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return ResponseEntity.ok(productWarrantyDTOList);
+    }
+
+    @PostMapping("/generate-error")
+    ResponseEntity<Object> generateError(@RequestParam("user_id") long userId,
+                                         @RequestBody ErrorsDTO errorsDTO){
+         log.info(errorsDTO.getProductId() + " :  " + errorsDTO.getType());
+         serviceCenterService.errorGenerate(errorsDTO);
+//        try {
+//            serviceCenterService.errorGenerate(errorsDTO);
+//        } catch (Exception e) {
+//            return new ResponseEntity<Object>(e, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+        return ResponseEntity.ok("Thành công");
     }
 
 }

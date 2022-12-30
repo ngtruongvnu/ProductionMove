@@ -89,12 +89,11 @@ public class AgentController {
         return ResponseEntity.ok(listResult);
     }
 
-    @GetMapping("/get-impossible-fix-product")
-    ResponseEntity<Object> getImpossibleFixProduct(@RequestParam("user_id") long userId,
-                                                   @RequestParam("filter") String filter){
-        List<SellProductFilterTime> listResult = productService.getProductSoldFilterTime(filter);
-        return ResponseEntity.ok(listResult);
-    }
+//    @GetMapping("/get-impossible-fix-product")
+//    ResponseEntity<Object> getImpossibleFixProduct(@RequestParam("user_id") long userId){
+//        List<SellProductFilterTime> listResult = productService.getProductSoldFilterTime(filter);
+//        return ResponseEntity.ok(listResult);
+//    }
 
     @PostMapping("/notify-customer")
     ResponseEntity<Object> notifyCustomer(@RequestParam("user_id") long userId,

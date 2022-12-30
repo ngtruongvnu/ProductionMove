@@ -1,8 +1,12 @@
 package com.project.productmove.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ErrorsDTO {
     private Long id;
+    @JsonProperty(value = "product_id",required = true)
     private Long productId;
+    @JsonProperty(value = "error_type",required = true)
     private Integer type;
     private Long productBatch;
     private String description;

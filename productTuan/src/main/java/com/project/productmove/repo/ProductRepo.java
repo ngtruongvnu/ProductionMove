@@ -47,4 +47,9 @@ public interface ProductRepo extends JpaRepository<ProductsEntity, Long>,Product
             "JOIN customer u ON o.customer_id = u.id \n" +
             "WHERE p.id = ?1", nativeQuery = true)
     List<String[]> getCustomer(Long id);
+
+    @Query(value = "SELECT pr.product_batch_id FROM products pr WHERE pr.id =?", nativeQuery = true)
+    Long productBatchId(Long productId);
+
+
 }

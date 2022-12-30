@@ -23,4 +23,14 @@ public class ProductRepoImpl implements ProductRepoCustom {
         List<Object[]> result = query.getResultList();
         return result;
     }
+
+    @Override
+    public List<Object[]> listProductWantWarranty(long userId) {
+        String queryListProductWantWarranty = "SELECT pr.id,pd.name FROM products pr\n" +
+                "JOIN productline_details pd ON pr.product_detail_id = pd.id\n" +
+                "WHERE pr.status = 3 AND pr.user_id = " + userId;
+        Query query = en.createNativeQuery(queryListProductWantWarranty);
+        List<Object[]> result = query.getResultList();
+        return result;
+    }
 }

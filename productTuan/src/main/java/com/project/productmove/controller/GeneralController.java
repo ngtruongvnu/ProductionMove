@@ -77,7 +77,7 @@ public class GeneralController {
         if(generalService.checkUserExistByUserName(userDTO.getUserName())) {
             try {
                 userLoginDTO = generalService.getUserLoginDTO(userDTO);
-
+                log.info(userLoginDTO.getUserName());
             } catch (Exception e) {
                 if (userLoginDTO == null) {
                     return new ResponseEntity<Object>("Lỗi : sai password", HttpStatus.NOT_ACCEPTABLE);
