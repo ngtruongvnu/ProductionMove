@@ -363,6 +363,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public String recoveryByProductBatchId(Long productline_id) {
+        try {
+            List<ProductsEntity> entityList = productRepo.findAllByProductDetailId(productline_id);
+            for (ProductsEntity entity : entityList){
+                entity.setStatus(9);
+            }
+            productRepo.saveAll(entityList);
+            return "ok";
+        } catch (Exception e){
+            log.error("error in recoveryByProductBatchId " + productline_id);
+            log.error(e);
+            return "error";
+        }
+
+    }
+
+    @Override
     public List<ProductThongKeDTO> getProductByServiceCenter() {
         return null;
     }

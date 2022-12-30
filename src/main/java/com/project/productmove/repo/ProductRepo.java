@@ -49,4 +49,6 @@ public interface ProductRepo extends JpaRepository<ProductsEntity, Long> {
             "JOIN user u ON p.user_id = u.id\n" +
             "WHERE p.`status` <=9 AND p.status >=2 GROUP BY p.user_id", nativeQuery = true)
     List<Object[]> getSumProducByAgent();
+
+    List<ProductsEntity> findAllByProductDetailId(Long productline_id);
 }

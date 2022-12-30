@@ -100,4 +100,9 @@ public class FactoryController {
         return ResponseEntity.ok().body(productService.recoverByProductBatchId(productbatch_id));
     }
 
+    @PostMapping("/recovery-by-product-line-id")
+    ResponseEntity<Object> recoveryByProductBatchId(@RequestParam Long productline_id){
+        return ResponseEntity.ok().body(productService.recoveryByProductBatchId(productline_id));
+    }
+
 }

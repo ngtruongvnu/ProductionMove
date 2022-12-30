@@ -35,5 +35,6 @@ public interface ProductService {
     List<ProductThongKeDTO> getProductByFactory();
 
     List<ProductsInfooDto> getInfoProducts();
+    String recoveryByProductBatchId( Long productline_id);
 
 }
