@@ -1,0 +1,72 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar"
+              nzCollapsible
+              nzWidth="256px"
+              nzBreakpoint="md"
+              [(nzCollapsed)]="isCollapsed"
+              [nzTrigger]="null">
+        <div class="sidebar-logo">
+            <span>
+                <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+                <h1>Admin</h1>
+            </span>
+        </div>
+        <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-submenu nzOpen nzTitle="Quản lý sản phẩm" nzIcon="dashboard">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="product-lines">Quản lý danh mục sản phẩm</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="products">Theo dõi sản phẩm</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="product-statistics">Thống kê sản phẩm</a>
+                    </li>
+                </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Quản lý tài khoản" nzIcon="user">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="manage-user">Quản lý cơ cở</a>
+                    </li>
+                    <li nz-menu-item nzMatchRouter>
+                        <a routerLink="add-user">Cấp tài khoản</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-layout>
+        <nz-header>
+            <div class="app-header">
+                <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+                    <span class="trigger"
+                          nz-icon
+                          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+                    ></span>
+                </span>
+                <h1 class="header-title">Production Move</h1>
+                <div class="header-avatar">
+                    <nz-avatar nzIcon="user" style="background-color:#87d068;" nz-dropdown
+                               [nzDropdownMenu]="logoutDropDown"
+                               nzPlacement="bottomLeft"></nz-avatar>
+                    <span class="header-username">Hello, {{currentUser.firstName}}</span>
+                </div>
+            </div>
+            <nz-dropdown-menu #logoutDropDown="nzDropdownMenu">
+                <ul nz-menu>
+                    <li nz-menu-item>
+                        <a><span nz-icon nzType="logout" nzTheme="outline" style="padding-right: 12px"
+                                 (click)="logout()"></span> Log out</a>
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+        </nz-header>
+        <nz-content>
+            <div class="inner-content">
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout>

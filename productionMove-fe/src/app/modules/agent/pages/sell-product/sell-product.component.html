@@ -1,0 +1,60 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstname">Họ</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+            <input nz-input formControlName="firstname" id="firstname" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastname">Tên</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+            <input nz-input formControlName="lastname" id="lastname" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="phoneNumber" nzRequired>Số điện thoại</nz-form-label>
+        <nz-form-control
+            [nzSm]="14"
+            [nzXs]="24"
+            [nzValidateStatus]="validateForm.controls['phoneNumber']"
+            nzErrorTip="Please input your phone number!"
+        >
+            <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                <ng-template #addOnBeforeTemplate>
+                    <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                        <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+                        <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+                    </nz-select>
+                </ng-template>
+                <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="address">Địa chỉ</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid address">
+            <input nz-input formControlName="address" id="address" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="productid">ID sản phẩm</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid ID">
+            <input nz-input formControlName="productid" id="productid" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <label nz-checkbox formControlName="agree">
+            <span>
+              I have read the
+              <a>agreement</a>
+            </span>
+            </label>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

@@ -1,0 +1,47 @@
+<meta charset="UTF-8">
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item *ngFor="let control of listOfControl; let i = index">
+        <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="i === 0" [nzFor]="control.controlInstance">
+            ProductID
+        </nz-form-label>
+        <nz-form-control
+            [nzXs]="24"
+            [nzSm]="20"
+            [nzOffset]="i === 0 ? 0 : 4"
+            nzErrorTip="Nhập ID của sản phẩm."
+        >
+            <input
+                class="passenger-input"
+                nz-input
+                placeholder="Điền ID sản phẩm"
+                [attr.id]="control.id"
+                [formControlName]="control.controlInstance"
+            />
+            <span
+                nz-icon
+                nzType="minus-circle-o"
+                class="dynamic-delete-button"
+                (click)="removeField(control, $event)"
+            ></span>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+            <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
+                <span nz-icon nzType="plus"></span>
+                Add field
+            </button>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzXs]="24" [nzSm]="4" nzRequired nzFor="warehouse">Kho</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Điền ID kho ">
+            <input nz-input formControlName="warehouse" id="warehouse" placeholder="Điền ID kho"/>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+            <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

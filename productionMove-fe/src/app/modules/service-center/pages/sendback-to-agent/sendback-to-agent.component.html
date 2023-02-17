@@ -1,0 +1,24 @@
+<h1>Chuyển lại sản phẩm cho bên đại lý</h1>
+<form nz-form class="thing">
+    <nz-form-item>
+        <nz-form-label [nzSpan]="8">ProductID</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="10" nzErrorTip="Input is required">
+            <input nz-input [ngModel]="" name="required" required />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="8">Đại lý</nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="10" nzErrorTip="ID agent required">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Chọn ID" [(ngModel)]="selectedValue">
+                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 8, offset: 0 }" [nzSm]="{ span: 24, offset: 10 }">
+            <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

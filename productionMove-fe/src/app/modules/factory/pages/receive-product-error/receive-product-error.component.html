@@ -1,0 +1,50 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>Factory</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        <a>Nhập kho sản phẩm lỗi</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div class="container">
+    <nz-card>
+        <div class="content">
+            <div class="title">
+                <div></div>
+                <h3>Danh sách sản phẩm</h3>
+                <div></div>
+            </div>
+            <nz-table
+                #sortTable
+                [nzData]="listOfData"
+                nzTableLayout="fixed"
+                [nzPageSize]="pagesize"
+                [nzShowPagination]="true"
+                [nzShowSizeChanger]="true"
+                [nzPageSizeOptions]="[6, 8, 10]"
+                [nzLoading]="isLoading"
+                nzSize="small"
+            >
+                <thead>
+                <tr>
+                    <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare"
+                        [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of sortTable.data">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.productName }}</td>
+                    <td>{{ data.quantity }}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+
+            <div class="action-btns">
+                <nz-select nzPlaceHolder="Chọn kho lưu trữ"></nz-select>
+                <button nz-button nzType="primary">Nhập kho</button>
+            </div>
+        </div>
+    </nz-card>
+</div>

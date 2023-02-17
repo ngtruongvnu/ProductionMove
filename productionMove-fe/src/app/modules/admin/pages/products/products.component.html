@@ -1,0 +1,55 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>Admin</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        <a>Theo dõi sản phẩm</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<div class="container">
+    <nz-card>
+        <div class="content">
+            <div class="title">
+                <h3>Theo dõi sản phẩm</h3>
+            </div>
+            <nz-table
+                #sortTable
+                [nzData]="listOfData"
+                nzTableLayout="fixed"
+                [nzPageSize]="pagesize"
+                [nzShowPagination]="true"
+                [nzShowSizeChanger]="true"
+                [nzPageSizeOptions]="[6, 8, 10]"
+                [nzLoading]="isLoading"
+                nzSize="small"
+            >
+                <thead>
+                <tr>
+                    <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare"
+                        [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of sortTable.data">
+                    <td>{{ data.productCode }}</td>
+                    <td>{{ data.productName  }}</td>
+                    <td>{{ data.warrantyPeriod }}</td>
+                    <td>{{ data.warrantyCount }}</td>
+                    <td>{{ getCarStatus(data.status)}}</td>
+                    <td>
+                        <div class="action-btns">
+                            <button
+                                nz-button
+                                nzType="primary"
+                                nzSize="small"
+                                (click)="negative('products/' + data.id.toString())"
+                            >Xem chi tiết</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </nz-card>
+</div>
